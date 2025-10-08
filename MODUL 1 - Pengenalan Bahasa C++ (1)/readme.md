@@ -194,7 +194,7 @@ int main() {
 
 Kode di atas digunakan untuk menerima satu input angka dari pengguna, lalu mencetak pola cermin angka (mirror pattern) yang menurun dari baris atas ke bawah menggunakan perulangan for dan fungsi cout untuk menampilkan hasil ke layar.
 #### Full code Screenshot:
-<img width="593" height="420" alt="Image" src="https://github.com/user-attachments/assets/3701c2ef-5dc6-456c-ac98-4bf2d9f4168b" />
+<img width="307" height="404" alt="Image" src="https://github.com/user-attachments/assets/cec748a4-94ca-48b3-87ce-e272a9489e7d" />
 
 
 ## Kesimpulan
