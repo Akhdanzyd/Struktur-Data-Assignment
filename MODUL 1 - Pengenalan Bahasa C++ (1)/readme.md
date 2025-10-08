@@ -8,6 +8,7 @@ Pertama ada identifier yang biasanya digunakan untuk variabel, konstanta, fungsi
 
 ### 1. [Nama Topik]
 
+```C++
 #include <iostream>
 using namespace std;
 
@@ -62,7 +63,10 @@ int main () {
     cout << "a != b = " << (a!=b) << endl;
 }
 
-Kode di atas digunakan untuk menerima dua input bilangan bulat dari pengguna, lalu menampilkan hasil operasi aritmatika (penjumlahan, pengurangan, perkalian, pembagian, dan sisa bagi) serta hasil perbandingan logika (lebih kecil, lebih besar, sama dengan, dan tidak sama dengan) antara kedua bilangan tersebut menggunakan fungsi cout untuk mencetak hasil ke layar.
+Kode di atas digunakan untuk menerima dua input bilangan bulat dari pengguna, lalu menampilkan hasil operasi
+aritmatika (penjumlahan, pengurangan, perkalian, pembagian, dan sisa bagi) serta hasil perbandingan logika
+(lebih kecil, lebih besar, sama dengan, dan tidak sama dengan) antara kedua bilangan tersebut menggunakan
+fungsi cout untuk mencetak hasil ke layar.
 
 ## Unguided 
 
