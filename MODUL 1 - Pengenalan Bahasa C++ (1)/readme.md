@@ -156,7 +156,7 @@ Kode di atas digunakan untuk menerima sebuah angka antara 0 sampai 100 dari peng
 #### Full code Screenshot:
 <img width="593" height="420" alt="Image" src="https://github.com/user-attachments/assets/3701c2ef-5dc6-456c-ac98-4bf2d9f4168b" />
 
-### 3. [mwmbuat segitiga terbalik]
+### 3. [membuat segitiga terbalik]
 
 ```C++
 #include <iostream>
@@ -190,10 +190,9 @@ int main() {
 
 ```
 #### Output:
-<img width="187" height="35" alt="Image" src="https://github.com/user-attachments/assets/06ea09a6-6ab7-4b8d-abe9-02dd59c89d16" />
+<img width="265" height="74" alt="Image" src="https://github.com/user-attachments/assets/f78686c5-1fba-42bb-b4e9-b3f12ce124e0" />
 
-Kode di atas digunakan untuk menerima sebuah angka antara 0 sampai 100 dari pengguna, kemudian menampilkan angka tersebut dalam bentuk tulisan (kata) dalam bahasa Indonesia menggunakan fungsi cout untuk mencetak hasil ke layar.
-
+Kode di atas digunakan untuk menerima satu input angka dari pengguna, lalu mencetak pola cermin angka (mirror pattern) yang menurun dari baris atas ke bawah menggunakan perulangan for dan fungsi cout untuk menampilkan hasil ke layar.
 #### Full code Screenshot:
 <img width="593" height="420" alt="Image" src="https://github.com/user-attachments/assets/3701c2ef-5dc6-456c-ac98-4bf2d9f4168b" />
 
