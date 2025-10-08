@@ -67,10 +67,13 @@ Kode di atas digunakan untuk menerima dua input bilangan bulat dari pengguna, la
 aritmatika (penjumlahan, pengurangan, perkalian, pembagian, dan sisa bagi) serta hasil perbandingan logika
 (lebih kecil, lebih besar, sama dengan, dan tidak sama dengan) antara kedua bilangan tersebut menggunakan
 fungsi cout untuk mencetak hasil ke layar.
-
+```
 ## Unguided 
 
-### 1. [Soal]
+### 1. [Buatlah program yang menerima input-an dua buah bilangan betipe float, kemudian
+memberikan output-an hasil penjumlahan, pengurangan, perkalian, dan pembagian dari dua
+bilangan tersebut.
+ ]
 
 ```C++
 #include <iostream>
@@ -97,12 +100,63 @@ int main() {
 }
 ```
 #### Output:
-![240302_00h00m06s_screenshot](https://github.com/suxeno/Struktur-Data-Assignment/assets/111122086/6d1727a8-fb77-4ecf-81ff-5de9386686b7)
+<img width="520" height="422" alt="Image" src="https://github.com/user-attachments/assets/c22df480-5dcd-400b-9b4f-29cba8dc821e" />
 
 Kode di atas digunakan untuk menerima dua input bilangan bertipe float dari pengguna, kemudian menampilkan hasil operasi penjumlahan, pengurangan, perkalian, dan pembagian menggunakan fungsi cout untuk mencetak hasil ke layar.
 
 #### Full code Screenshot:
-![240309_10h21m35s_screenshot](https://github.com/suxeno/Struktur-Data-Assignment/assets/111122086/41e9641c-ad4e-4e50-9ca4-a0215e336b04)
+<img width="520" height="422" alt="Image" src="https://github.com/user-attachments/assets/c22df480-5dcd-400b-9b4f-29cba8dc821e" />
+
+### 2. [Buatlah sebuah program yang menerima masukan angka dan mengeluarkan output nilai
+angka tersebut dalam bentuk tulisan. Angka yang akan di- input-kan user adalah bilangan bulat
+positif mulai dari 0 s.d 100]
+
+```C++
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cout << "Masukkan angka (0-100): ";
+    cin >> n;
+
+    string satuan[] = {"", "satu", "dua", "tiga", "empat", "lima", 
+                       "enam", "tujuh", "delapan", "sembilan"};
+    string hasil;
+
+    if (n == 0)
+        hasil = "nol";
+    else if (n == 10)
+        hasil = "sepuluh";
+    else if (n == 11)
+        hasil = "sebelas";
+    else if (n < 20)
+        hasil = satuan[n - 10] + " belas";
+    else if (n < 100) {
+        int puluh = n / 10;
+        int sisa = n % 10;
+        hasil = satuan[puluh] + " puluh";
+        if (sisa != 0)
+            hasil += " " + satuan[sisa];
+    } else if (n == 100)
+        hasil = "seratus";
+    else
+        hasil = "Angka di luar jangkauan!";
+
+    cout << n << " : " << hasil << endl;
+    return 0;
+}
+
+```
+#### Output:
+<img width="520" height="422" alt="Image" src="https://github.com/user-attachments/assets/c22df480-5dcd-400b-9b4f-29cba8dc821e" />
+
+Kode di atas digunakan untuk menerima dua input bilangan bertipe float dari pengguna, kemudian menampilkan hasil operasi penjumlahan, pengurangan, perkalian, dan pembagian menggunakan fungsi cout untuk mencetak hasil ke layar.
+
+#### Full code Screenshot:
+<img width="520" height="422" alt="Image" src="https://github.com/user-attachments/assets/c22df480-5dcd-400b-9b4f-29cba8dc821e" />
+
+
 
 
 ## Kesimpulan
