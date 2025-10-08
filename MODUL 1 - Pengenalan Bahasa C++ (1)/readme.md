@@ -154,9 +154,48 @@ int main() {
 Kode di atas digunakan untuk menerima sebuah angka antara 0 sampai 100 dari pengguna, kemudian menampilkan angka tersebut dalam bentuk tulisan (kata) dalam bahasa Indonesia menggunakan fungsi cout untuk mencetak hasil ke layar.
 
 #### Full code Screenshot:
-<img width="520" height="422" alt="Image" src="https://github.com/user-attachments/assets/c22df480-5dcd-400b-9b4f-29cba8dc821e" />
+<img width="593" height="420" alt="Image" src="https://github.com/user-attachments/assets/3701c2ef-5dc6-456c-ac98-4bf2d9f4168b" />
 
+### 3. [mwmbuat segitiga terbalik]
 
+```C++
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cout << "Masukkan angka: ";
+    cin >> n;
+
+    for (int i = n; i >= 1; i--) {
+        for (int s = n; s > i; s--) {
+            cout << "  "; 
+        }
+        for (int j = i; j >= 1; j--) {
+            cout << j << " ";
+        }
+        cout << "* ";
+        for (int j = 1; j <= i; j++) {
+            cout << j << " ";
+        }
+        cout << endl;
+    }
+    for (int s = 0; s < n; s++) {
+        cout << "  "; 
+    }
+    cout << "*\n";
+
+    return 0;
+}
+
+```
+#### Output:
+<img width="187" height="35" alt="Image" src="https://github.com/user-attachments/assets/06ea09a6-6ab7-4b8d-abe9-02dd59c89d16" />
+
+Kode di atas digunakan untuk menerima sebuah angka antara 0 sampai 100 dari pengguna, kemudian menampilkan angka tersebut dalam bentuk tulisan (kata) dalam bahasa Indonesia menggunakan fungsi cout untuk mencetak hasil ke layar.
+
+#### Full code Screenshot:
+<img width="593" height="420" alt="Image" src="https://github.com/user-attachments/assets/3701c2ef-5dc6-456c-ac98-4bf2d9f4168b" />
 
 
 ## Kesimpulan
