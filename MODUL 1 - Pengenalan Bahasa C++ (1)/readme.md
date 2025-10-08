@@ -6,7 +6,7 @@
 Pertama ada identifier yang biasanya digunakan untuk variabel, konstanta, fungsi atau objek lain yang didefinisikan oleh program. Lalu ada input/output juga diperkenalkan berbagai macam operator. untuk menyelesaikan masalah menggunakan kondisonal seperti if, if-else, switch. dan 2 terakhir ada perulangan dan juga struktur 
 ## Guided 
 
-### 1. [Nama Topik]
+### 1. [pengenalan bahasa c++]
 
 ```C++
 #include <iostream>
@@ -35,32 +35,6 @@ int main () {
     cout << "a >= b = " << (a>=b) << endl;
     cout << "a == b = " << (a==b) << endl;
     cout << "a != b = " << (a!=b) << endl;
-}#include <iostream>
-using namespace std;
-
-int main () {
-    int a;
-    int b;
-
-    cout << "masukan angka: ";
-    cin >> a;
-    cout << "masukan angka: ";
-    cin >> b;
-
-    //operator aritmatika
-    cout << "a + b = " << (a+b) << endl;
-    cout << "a - b = " << (a-b) << endl;
-    cout << "a * b = " << (a*b) << endl;
-    cout << "a / b = " << (a/b) << endl;
-    cout << "a % b = " << (a%b) << endl;
-
-    //operator logika
-    cout << "a < b = " << (a<b) << endl;
-    cout << "a > b = " << (a>b) << endl;
-    cout << "a <= b = " << (a<=b) << endl;
-    cout << "a >= b = " << (a>=b) << endl;
-    cout << "a == b = " << (a==b) << endl;
-    cout << "a != b = " << (a!=b) << endl;
 }
 
 Kode di atas digunakan untuk menerima dua input bilangan bulat dari pengguna, lalu menampilkan hasil operasi
@@ -198,7 +172,7 @@ Kode di atas digunakan untuk menerima satu input angka dari pengguna, lalu mence
 
 
 ## Kesimpulan
-Ringkasan dan interpretasi pandangan kalia dari hasil praktikum dan pembelajaran yang didapat[1].
+Ketiga program tersebut melatih penggunaan operator aritmatika, percabangan if-else, dan perulangan bersarang dalam C++ untuk menghitung operasi matematika, mengubah angka menjadi tulisan, serta mencetak pola segitiga cermin angka secara interaktif di layar.
 
 ## Referensi
-[1] I. Holm, Narrator, and J. Fullerton-Smith, Producer, How to Build a Human [DVD]. London: BBC; 2002.
+Petani Kode. (n.d.). Tutorial C++ Dasar: Operator, Percabangan, dan Perulangan.
