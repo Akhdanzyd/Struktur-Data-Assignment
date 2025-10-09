@@ -3,7 +3,8 @@
 
 ## Dasar Teori
 
-Array adalah kumpulan data dengan nama dan tipe yang sama, diakses menggunakan indeks, dan dapat berbentuk satu dimensi, dua dimensi, atau lebih. Pointer adalah variabel yang menyimpan alamat memori dari variabel lain dan memiliki hubungan erat dengan array karena keduanya dapat saling digunakan. Fungsi adalah blok kode untuk menjalankan tugas tertentu agar program lebih terstruktur dan efisien, sedangkan prosedur (fungsi void) tidak mengembalikan nilai. Parameter pada fungsi dapat dilewatkan dengan tiga cara: melalui nilai (call by value), pointer (call by pointer), dan referensi (call by reference).## Guided 
+Array adalah kumpulan data dengan nama dan tipe yang sama, diakses menggunakan indeks, dan dapat berbentuk satu dimensi, dua dimensi, atau lebih. Pointer adalah variabel yang menyimpan alamat memori dari variabel lain dan memiliki hubungan erat dengan array karena keduanya dapat saling digunakan. Fungsi adalah blok kode untuk menjalankan tugas tertentu agar program lebih terstruktur dan efisien, sedangkan prosedur (fungsi void) tidak mengembalikan nilai. Parameter pada fungsi dapat dilewatkan dengan tiga cara: melalui nilai (call by value), pointer (call by pointer), dan referensi (call by reference).
+## Guided 
 
 ### 2. [pengenalan bahasa c++]
 
@@ -291,6 +292,7 @@ Ketiga program tersebut menunjukkan penerapan konsep dasar C++ yaitu penggunaan 
 ## Referensi
 Petani Kode. (2024, April 14). Belajar C++ #14: Memahami Pointer di C++.
 Petani Kode. (2019, Mei 18). Belajar Pemrograman C #11: Mengenal Fungsi pada C.
+
 
 
 
