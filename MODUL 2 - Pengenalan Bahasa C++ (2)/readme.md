@@ -226,7 +226,7 @@ int main() {
 
 ```
 #### Output:
-<img width="187" height="35" alt="Image" src="https://github.com/user-attachments/assets/06ea09a6-6ab7-4b8d-abe9-02dd59c89d16" />
+<img width="179" height="67" alt="Image" src="https://github.com/user-attachments/assets/2e528223-ffc1-49d6-8f93-74e972b373a8" />
 
 Kode di atas digunakan untuk menerima sebuah angka antara 0 sampai 100 dari pengguna, kemudian menampilkan angka tersebut dalam bentuk tulisan (kata) dalam bahasa Indonesia menggunakan fungsi cout untuk mencetak hasil ke layar.
 
@@ -290,6 +290,7 @@ Ketiga program tersebut melatih penggunaan operator aritmatika, percabangan if-e
 
 ## Referensi
 Petani Kode. (n.d.). Tutorial C++ Dasar: Operator, Percabangan, dan Perulangan.
+
 
 
 
