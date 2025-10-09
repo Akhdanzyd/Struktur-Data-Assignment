@@ -158,7 +158,7 @@ int main() {
 }
 ```
 #### Output:
-<img width="520" height="422" alt="Image" src="https://github.com/user-attachments/assets/c22df480-5dcd-400b-9b4f-29cba8dc821e" />
+<img width="181" height="344" alt="Image" src="https://github.com/user-attachments/assets/19b1840c-0dad-4565-8ecd-4a1b88c4fcf0" />
 
 Kode di atas digunakan untuk menerima dua input bilangan bertipe float dari pengguna, kemudian menampilkan hasil operasi penjumlahan, pengurangan, perkalian, dan pembagian menggunakan fungsi cout untuk mencetak hasil ke layar.
 
@@ -269,4 +269,5 @@ Ketiga program tersebut melatih penggunaan operator aritmatika, percabangan if-e
 
 ## Referensi
 Petani Kode. (n.d.). Tutorial C++ Dasar: Operator, Percabangan, dan Perulangan.
+
 
