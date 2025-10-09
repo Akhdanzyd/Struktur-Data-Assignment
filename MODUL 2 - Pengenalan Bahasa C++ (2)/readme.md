@@ -185,7 +185,7 @@ int main() {
 #### Output:
 <img width="181" height="344" alt="Image" src="https://github.com/user-attachments/assets/19b1840c-0dad-4565-8ecd-4a1b88c4fcf0" />
 
-Kode di atas digunakan untuk menerima dua input bilangan bertipe float dari pengguna, kemudian menampilkan hasil operasi penjumlahan, pengurangan, perkalian, dan pembagian menggunakan fungsi cout untuk mencetak hasil ke layar.
+Program operasi matriks 3x3 digunakan untuk menghitung hasil penjumlahan, pengurangan, dan perkalian antara dua matriks berordo 3x3.
 
 #### Full code Screenshot:
 <img width="190" height="377" alt="Image" src="https://github.com/user-attachments/assets/29add33e-bd71-4a35-8641-c0249666987a" />
@@ -228,7 +228,7 @@ int main() {
 #### Output:
 <img width="179" height="67" alt="Image" src="https://github.com/user-attachments/assets/2e528223-ffc1-49d6-8f93-74e972b373a8" />
 
-Kode di atas digunakan untuk menerima sebuah angka antara 0 sampai 100 dari pengguna, kemudian menampilkan angka tersebut dalam bentuk tulisan (kata) dalam bahasa Indonesia menggunakan fungsi cout untuk mencetak hasil ke layar.
+Program pertukaran nilai dengan pointer dan reference digunakan untuk menukar nilai dari tiga variabel menggunakan dua cara berbeda, yaitu melalui alamat memori (pointer) dan referensi variabel.
 
 #### Full code Screenshot:
 <img width="347" height="312" alt="Image" src="https://github.com/user-attachments/assets/54b1990a-936c-4524-ab5c-4298141fbf69" />
@@ -280,7 +280,8 @@ int main() {
 #### Output:
 <img width="265" height="74" alt="Image" src="https://github.com/user-attachments/assets/f78686c5-1fba-42bb-b4e9-b3f12ce124e0" />
 
-Kode di atas digunakan untuk menerima satu input angka dari pengguna, lalu mencetak pola cermin angka (mirror pattern) yang menurun dari baris atas ke bawah menggunakan perulangan for dan fungsi cout untuk menampilkan hasil ke layar.
+Program array satu dimensi digunakan untuk menampilkan isi array serta mencari nilai maksimum, minimum, dan rata-rata menggunakan fungsi dan prosedur dengan menu pilihan.
+
 #### Full code Screenshot:
 <img width="307" height="404" alt="Image" src="https://github.com/user-attachments/assets/cec748a4-94ca-48b3-87ce-e272a9489e7d" />
 
@@ -290,6 +291,7 @@ Ketiga program tersebut melatih penggunaan operator aritmatika, percabangan if-e
 
 ## Referensi
 Petani Kode. (n.d.). Tutorial C++ Dasar: Operator, Percabangan, dan Perulangan.
+
 
 
 
