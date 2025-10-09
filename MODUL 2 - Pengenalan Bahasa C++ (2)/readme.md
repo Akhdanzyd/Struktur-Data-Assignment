@@ -278,7 +278,7 @@ int main() {
 
 ```
 #### Output:
-<img width="265" height="74" alt="Image" src="https://github.com/user-attachments/assets/f78686c5-1fba-42bb-b4e9-b3f12ce124e0" />
+<img width="181" height="425" alt="Image" src="https://github.com/user-attachments/assets/2a191f12-89c7-446b-82d9-266fc2081c90" />
 
 Program array satu dimensi digunakan untuk menampilkan isi array serta mencari nilai maksimum, minimum, dan rata-rata menggunakan fungsi dan prosedur dengan menu pilihan.
 
@@ -291,6 +291,7 @@ Ketiga program tersebut melatih penggunaan operator aritmatika, percabangan if-e
 
 ## Referensi
 Petani Kode. (n.d.). Tutorial C++ Dasar: Operator, Percabangan, dan Perulangan.
+
 
 
 
