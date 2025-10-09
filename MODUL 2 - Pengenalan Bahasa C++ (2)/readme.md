@@ -138,24 +138,49 @@ int main() {
 using namespace std;
 
 int main() {
-    float a, b;
+    int A[3][3], B[3][3], C[3][3];
 
-    cout << " bilangan pertama: ";
-    cin >> a;
-    cout << " bilangan kedua: ";
-    cin >> b;
+    cout << " matriks A (3x3):" << endl;
+    for (int i = 0; i < 3; i++)
+        for (int j = 0; j < 3; j++)
+            cin >> A[i][j];
 
-    cout << "Penjumlahan = " << a + b << endl;
-    cout << "Pengurangan = " << a - b << endl;
-    cout << "Perkalian   = " << a * b << endl;
+    cout << "\n matriks B (3x3):" << endl;
+    for (int i = 0; i < 3; i++)
+        for (int j = 0; j < 3; j++)
+            cin >> B[i][j];
 
-    if (b != 0)
-        cout << "Pembagian   = " << a / b << endl;
-    else
+    
+    cout << "\n Penjumlahan (A + B):" << endl;
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            cout << A[i][j] + B[i][j] << "\t";
+        }
+        cout << endl;
+    }
+
+    cout << "\n Pengurangan (A - B):" << endl;
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            cout << A[i][j] - B[i][j] << "\t";
+        }
+        cout << endl;
+    }
+
+    cout << "\n Perkalian (A × B):" << endl;
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            C[i][j] = 0;
+            for (int k = 0; k < 3; k++)
+                C[i][j] += A[i][k] * B[k][j];
+            cout << C[i][j] << "\t";
+        }
+        cout << endl;
+    }
+
     return 0;
 }
 
-}
 ```
 #### Output:
 <img width="181" height="344" alt="Image" src="https://github.com/user-attachments/assets/19b1840c-0dad-4565-8ecd-4a1b88c4fcf0" />
@@ -163,7 +188,7 @@ int main() {
 Kode di atas digunakan untuk menerima dua input bilangan bertipe float dari pengguna, kemudian menampilkan hasil operasi penjumlahan, pengurangan, perkalian, dan pembagian menggunakan fungsi cout untuk mencetak hasil ke layar.
 
 #### Full code Screenshot:
-<img width="520" height="422" alt="Image" src="https://github.com/user-attachments/assets/c22df480-5dcd-400b-9b4f-29cba8dc821e" />
+<img width="190" height="377" alt="Image" src="https://github.com/user-attachments/assets/29add33e-bd71-4a35-8641-c0249666987a" />
 
 ### 2. [ Berdasarkan guided pointer dan reference sebelumnya, buatlah keduanya dapat menukar nilai dari 3 variabel]
 
@@ -171,37 +196,33 @@ Kode di atas digunakan untuk menerima dua input bilangan bertipe float dari peng
 #include <iostream>
 using namespace std;
 
+void tukarDenganPointer(int *x, int *y, int *z) {
+    int temp = *x;
+    *x = *y;
+    *y = *z;
+    *z = temp;
+}
+void tukarDenganReference(int &x, int &y, int &z) {
+    int temp = x;
+    x = y;
+    y = z;
+    z = temp;
+}
 int main() {
-    int n;
-    cout << "Masukkan angka (0-100): ";
-    cin >> n;
+    int a , b , c;
+    cin >> a >> b >> c;
+    cout << "Nilai awal:\n";
+    cout << "a = " << a << ", b = " << b << ", c = " << c << endl;
 
-    string satuan[] = {"", "satu", "dua", "tiga", "empat", "lima", 
-                       "enam", "tujuh", "delapan", "sembilan"};
-    string hasil;
+    tukarDenganPointer(&a, &b, &c);
+    cout << "a = " << a << ", b = " << b << ", c = " << c << endl;
 
-    if (n == 0)
-        hasil = "nol";
-    else if (n == 10)
-        hasil = "sepuluh";
-    else if (n == 11)
-        hasil = "sebelas";
-    else if (n < 20)
-        hasil = satuan[n - 10] + " belas";
-    else if (n < 100) {
-        int puluh = n / 10;
-        int sisa = n % 10;
-        hasil = satuan[puluh] + " puluh";
-        if (sisa != 0)
-            hasil += " " + satuan[sisa];
-    } else if (n == 100)
-        hasil = "seratus";
-    else
-        hasil = "Angka di luar jangkauan!";
+    tukarDenganReference(a, b, c);
+    cout << "a = " << a << ", b = " << b << ", c = " << c << endl;
 
-    cout << n << " : " << hasil << endl;
     return 0;
 }
+
 
 ```
 #### Output:
@@ -269,5 +290,6 @@ Ketiga program tersebut melatih penggunaan operator aritmatika, percabangan if-e
 
 ## Referensi
 Petani Kode. (n.d.). Tutorial C++ Dasar: Operator, Percabangan, dan Perulangan.
+
 
 
