@@ -231,7 +231,7 @@ int main() {
 Kode di atas digunakan untuk menerima sebuah angka antara 0 sampai 100 dari pengguna, kemudian menampilkan angka tersebut dalam bentuk tulisan (kata) dalam bahasa Indonesia menggunakan fungsi cout untuk mencetak hasil ke layar.
 
 #### Full code Screenshot:
-<img width="593" height="420" alt="Image" src="https://github.com/user-attachments/assets/3701c2ef-5dc6-456c-ac98-4bf2d9f4168b" />
+<img width="347" height="312" alt="Image" src="https://github.com/user-attachments/assets/54b1990a-936c-4524-ab5c-4298141fbf69" />
 
 ### 3. [Diketahui sebuah array 1 dimensi sebagai berikut :  
 arrA = {11, 8, 5, 7, 12, 26, 3, 54, 33, 55} 
@@ -290,6 +290,7 @@ Ketiga program tersebut melatih penggunaan operator aritmatika, percabangan if-e
 
 ## Referensi
 Petani Kode. (n.d.). Tutorial C++ Dasar: Operator, Percabangan, dan Perulangan.
+
 
 
 
