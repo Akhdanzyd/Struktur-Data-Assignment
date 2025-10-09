@@ -283,14 +283,14 @@ int main() {
 Program array satu dimensi digunakan untuk menampilkan isi array serta mencari nilai maksimum, minimum, dan rata-rata menggunakan fungsi dan prosedur dengan menu pilihan.
 
 #### Full code Screenshot:
-<img width="307" height="404" alt="Image" src="https://github.com/user-attachments/assets/cec748a4-94ca-48b3-87ce-e272a9489e7d" />
-
+<img width="299" height="483" alt="Image" src="https://github.com/user-attachments/assets/48f2969d-3c9a-4ef6-baa4-b43f12fa387a" />
 
 ## Kesimpulan
-Ketiga program tersebut melatih penggunaan operator aritmatika, percabangan if-else, dan perulangan bersarang dalam C++ untuk menghitung operasi matematika, mengubah angka menjadi tulisan, serta mencetak pola segitiga cermin angka secara interaktif di layar.
+Ketiga program tersebut menunjukkan penerapan konsep dasar C++ yaitu penggunaan array, pointer, reference, fungsi, dan prosedur untuk mempermudah pengolahan data seperti operasi matriks, pertukaran nilai variabel, serta pencarian nilai maksimum, minimum, dan rata-rata secara efisien dan terstruktur.
 
 ## Referensi
-Petani Kode. (n.d.). Tutorial C++ Dasar: Operator, Percabangan, dan Perulangan.
+Petani Kode. (2024, April 14). Belajar C++ #14: Memahami Pointer di C++.
+Petani Kode. (2019, Mei 18). Belajar Pemrograman C #11: Mengenal Fungsi pada C.
 
 
 
