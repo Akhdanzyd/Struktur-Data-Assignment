@@ -1,192 +1,156 @@
-# <h1 align="center">Laporan Praktikum Modul Pengenalan Bahasa C++ (2)</h1>
+# <h1 align="center">ABSTRACT DATA TYPE (ADT)  </h1>
 <p align="center">Akhdan Ziyad</p>
 
 ## Dasar Teori
 
-Array adalah kumpulan data dengan nama dan tipe yang sama, diakses menggunakan indeks, dan dapat berbentuk satu dimensi, dua dimensi, atau lebih. Pointer adalah variabel yang menyimpan alamat memori dari variabel lain dan memiliki hubungan erat dengan array karena keduanya dapat saling digunakan. Fungsi adalah blok kode untuk menjalankan tugas tertentu agar program lebih terstruktur dan efisien, sedangkan prosedur (fungsi void) tidak mengembalikan nilai. Parameter pada fungsi dapat dilewatkan dengan tiga cara: melalui nilai (call by value), pointer (call by pointer), dan referensi (call by reference).
+ADT (Abstract Data Type) adalah sebuah tipe data beserta sekumpulan operasi dasar (primitif) yang dapat dilakukan terhadap tipe tersebut. Dalam ADT yang lengkap, juga terdapat definisi invarian tipe dan aksioma yang berlaku, sehingga ADT bersifat statis. Sebuah ADT dapat berisi definisi ADT lain, seperti ADT waktu yang terdiri dari ADT jam dan tanggal, atau ADT garis yang tersusun dari dua ADT titik (POINT), serta ADT segi empat yang terdiri dari dua pasangan titik (Top, Left) dan (Bottom, Right). Dalam bahasa pemrograman seperti C, tipe ADT diterjemahkan menjadi struct, sedangkan operasi primitifnya diimplementasikan sebagai fungsi atau prosedur. Operasi primitif ini meliputi konstruktor atau kreator (pembentuk nilai tipe, biasanya diawali “Make”), selector (mengakses komponen, diawali “Get”), prosedur pengubah nilai komponen, validator komponen, destruktor atau dealokator (menghapus nilai dan memori), operasi baca/tulis untuk I/O, operator relasional, operasi aritmatika khusus, serta konversi antar tipe. Implementasi ADT biasanya dibagi menjadi dua modul utama dan satu modul driver, yaitu: (1) definisi atau spesifikasi tipe dan primitif dalam file header (.h) yang berisi deklarasi tipe dan fungsi sesuai kaidah bahasa pemrograman, serta (2) realisasi atau implementasi primitif dalam file program (.c atau .cpp) yang berisi kode fungsi dan prosedur dengan memanfaatkan konstruktor dan selector.
 ## Guided 
 
-### 1. [pengenalan bahasa c++]
+### 1. [ADT c++]
 
 ```C++
 #include <iostream>
 using namespace std;
 
-void tukar(int *x, int *y) {
-    int temp;
-    temp = *x;
-    *x = *y;
-    *y = temp;
-}
+struct mahasiswa{ 
+char nim[10]; 
+int nilai1,nilai2;
+};
+void inputMhs(mahasiswa &m); 
+float rata2(mahasiswa m);
 
-int main () {
-    int a = 20, b = 30;
-    int& ref = a;
-
-    cout << "Nilai a : " << a << endl;
-    cout << "Alamat a (&a) : " << &a << endl;
-    cout << "Nilai ref (alias a): " << ref << endl;
-    cout << "Alamat red (&ref): " << &ref << endl;
-
-
-    //mengubah nilai a lewar refrence
-    ref = 50;
-    cout << "\nSetelah ref = 50: " << endl;
-    cout << "Nilai a :" << a << endl;
-    cout << "Nilai ref :" << ref << endl;
-
-tukar(&a, &b);
-cout << "After swapping, value of a : " << a << " and b=" << b << endl;
-
-return 0;
+int main() 
+{ 
+mahasiswa mhs; 
+inputMhs(mhs); 
+cout << “rata-rata = “ << rata2(mhs); 
+return 0; 
 }
 
 
-#include <iostream>
-using namespace std;
-
-void tukar(int *x, int *y) {
-    int temp;
-    temp = *x;
-    *x = *y;
-    *y = temp;
+void inputMhs(mahasiswa &m){ 
+cout << “input nama = “; 
+cin >> m.nim; 
+cout << “input nilai = “; 
+cin >> m.nilai1; 
+cout << “input nilai2 = “;
+cin >> m.nilai2; 
+} 
+float rata2(mahasiswa m){ 
+return float(m.nilai1+m.nilai2)/2; 
 }
 
-main () {
-    int a = 20, b = 30;
-    int *ptr;
+mahasiswa.h
+#ifndef MAHASISWA_H_INCLUDED 
+#define MAHASISWA_H_INCLUDED 
+struct mahasiswa{ 
+char nim[10]; 
+int nilai1, nilai2; 
+};
+void inputMhs(mahasiswa &m); 
+float rata2(mahasiswa m); 
+#endif // MAHASISWA_H_INCLUDED
 
-    ptr = &a;
-
-    cout << "Value a : " << a << endl;
-    cout << "Address a : " << &a << endl;
-    cout << "Value stored in otr (address of a) : " << ptr << endl;
-    cout << "Value pointed to by ptr: " << *ptr << endl;
-
-
-tukar(&a, &b);
-cout << "After swapping, value of a : " << a << " and b=" << b << endl;
-
-return 0;
+mahasiswa.cpp
+#include “mahasiswa.h” 
+void inputMhs(mahasiswa &m){ 
+cout << “input nama = “; 
+cin >> (m).nim; 
+cout << “input nilai = “; 
+cin >> (m).nilai1; 
+cout << “input nilai2 = “; 
+cin >> (m).nilai2;
+} 
+ 
+float rata2(mahasiswa m){ 
+  return float(m.nilai1+m.nilai2)/2; 
 }
 
-#include <iostream>
-using namespace std;
-
-void tulis (int x) {
-    for (int i = 0; i < x; i++) {
-        cout << "Baris ke -: " << i+1 << endl;
-    }
-}
-
-
-int main() {
-    int jum;
-    cout << "Jumlah baris kata: ";
-    cin >> jum;
-    tulis(jum);
-    return 0;
-}
-
-#include <iostream>
-using namespace std;
-
-int main() {
-    // --- Array 1 Dimensi ---
-    int arr[5] = {10, 20, 30, 40, 50};
-    cout << "Array 1 Dimensi:" << endl;
-    for (int i = 0; i < 5; i++) {
-        cout << "Element ke-" << i << ": " << arr[i] << endl;
-    }
-    cout << endl;
-
-    // --- Array 2 Dimensi ---
-    int arr2D[2][3] = {
-        {1, 2, 3},
-        {4, 5, 6},
-    };
-    cout << "Array 2 Dimensi:" << endl;
-    for (int i = 0; i < 2; i++) {
-        for (int j = 0; j < 3; j++) {
-            cout << "arr2D[" << i << "][" << j << "]: " << arr2D[i][j]
-            << " ";
-        }
-        cout << endl;
-    }
-    // --- Array Multi Dimensi (3D) ---
-    int arr3D[2][2][3] = {
-        { {1, 2, 3}, {4, 5, 6} },
-        { {7, 8, 9}, {10, 11, 12} },
-    };
-    for (int i = 0; i < 2; i++) {
-        for (int j = 0; j < 2; j++) {
-            for (int k = 0; k < 3; k++) {
-                cout << "arr3D[" << i << "][" << j << "]["
-                << k << "]: " << arr3D[i][j][k] << endl;
-            }
-        }
-    }
-
-    return 0;
-}
+main.cpp
+#include <iostream> 
+#include “mahasiswa.h” 
+ 
+using namespace std; 
+ 
+int main() 
+{ 
+  mahasiswa mhs; 
+  inputMhs(mhs); 
+  cout << “rata-rata = “ << rata2(mhs); 
+  return 0; 
+} 
 ```
 ## Unguided 
 
-### 1. [Buatlah program yang dapat melakukan operasi penjumlahan, pengurangan, dan perkalian matriks 3x3 .]
+### 1. [Buat program yang dapat menyimpan data mahasiswa (max. 10) ke dalam sebuah array dengan field nama, nim, uts, uas, tugas, dan nilai akhir. Nilai akhir diperoleh dari FUNGSI dengan rumus 0.3*uts+0.4*uas+0.3*tugas.]
 
 ```C++
 #include <iostream>
 using namespace std;
 
+struct mahasiswa {
+    char nama[30];
+    char nim[15];
+    float uts, uas, tugas, nilaiAkhir;
+};
+
+void inputMhs(mahasiswa &m);
+float hitungNilaiAkhir(mahasiswa m);
+
 int main() {
-    int A[3][3], B[3][3], C[3][3];
+    mahasiswa mhs[10];
+    int n;
 
-    cout << " matriks A (3x3):" << endl;
-    for (int i = 0; i < 3; i++)
-        for (int j = 0; j < 3; j++)
-            cin >> A[i][j];
+    cout << "Masukkan jumlah mahasiswa (maks 10): ";
+    cin >> n;
 
-    cout << "\n matriks B (3x3):" << endl;
-    for (int i = 0; i < 3; i++)
-        for (int j = 0; j < 3; j++)
-            cin >> B[i][j];
-
-    
-    cout << "\n Penjumlahan (A + B):" << endl;
-    for (int i = 0; i < 3; i++) {
-        for (int j = 0; j < 3; j++) {
-            cout << A[i][j] + B[i][j] << "\t";
-        }
-        cout << endl;
+    if (n > 10) {
+        cout << "Jumlah mahasiswa tidak boleh lebih dari 10!" << endl;
+        return 0;
     }
 
-    cout << "\n Pengurangan (A - B):" << endl;
-    for (int i = 0; i < 3; i++) {
-        for (int j = 0; j < 3; j++) {
-            cout << A[i][j] - B[i][j] << "\t";
-        }
-        cout << endl;
+    for (int i = 0; i < n; i++) {
+        cout << "\nMahasiswa ke-" << i + 1 << endl;
+        inputMhs(mhs[i]);
+        mhs[i].nilaiAkhir = hitungNilaiAkhir(mhs[i]);
     }
 
-    cout << "\n Perkalian (A × B):" << endl;
-    for (int i = 0; i < 3; i++) {
-        for (int j = 0; j < 3; j++) {
-            C[i][j] = 0;
-            for (int k = 0; k < 3; k++)
-                C[i][j] += A[i][k] * B[k][j];
-            cout << C[i][j] << "\t";
-        }
-        cout << endl;
+    cout << "\n=== Data Mahasiswa ===\n";
+    for (int i = 0; i < n; i++) {
+        cout << "\nNama        : " << mhs[i].nama;
+        cout << "\nNIM         : " << mhs[i].nim;
+        cout << "\nUTS         : " << mhs[i].uts;
+        cout << "\nUAS         : " << mhs[i].uas;
+        cout << "\nTugas       : " << mhs[i].tugas;
+        cout << "\nNilai Akhir : " << mhs[i].nilaiAkhir << endl;
     }
 
     return 0;
 }
 
+void inputMhs(mahasiswa &m) {
+    cout << "Input nama   : ";
+    cin >> m.nama;
+    cout << "Input NIM    : ";
+    cin >> m.nim;
+    cout << "Input nilai UTS   : ";
+    cin >> m.uts;
+    cout << "Input nilai UAS   : ";
+    cin >> m.uas;
+    cout << "Input nilai Tugas : ";
+    cin >> m.tugas;
+}
+
+float hitungNilaiAkhir(mahasiswa m) {
+    return 0.3 * m.uts + 0.4 * m.uas + 0.3 * m.tugas;
+}
+
+
 ```
 #### Output:
 <img width="181" height="344" alt="Image" src="https://github.com/user-attachments/assets/19b1840c-0dad-4565-8ecd-4a1b88c4fcf0" />
 
-Program operasi matriks 3x3 digunakan untuk menghitung hasil penjumlahan, pengurangan, dan perkalian antara dua matriks berordo 3x3.
+Program ini menyimpan data maksimal 10 mahasiswa dan menghitung nilai akhir tiap mahasiswa menggunakan fungsi dengan rumus 0.3UTS + 0.4UAS + 0.3*Tugas.
 
 #### Full code Screenshot:
 <img width="190" height="377" alt="Image" src="https://github.com/user-attachments/assets/29add33e-bd71-4a35-8641-c0249666987a" />
@@ -292,6 +256,7 @@ Ketiga program tersebut menunjukkan penerapan konsep dasar C++ yaitu penggunaan 
 ## Referensi
 Petani Kode. (2024, April 14). Belajar C++ #14: Memahami Pointer di C++.
 Petani Kode. (2019, Mei 18). Belajar Pemrograman C #11: Mengenal Fungsi pada C.
+
 
 
 
