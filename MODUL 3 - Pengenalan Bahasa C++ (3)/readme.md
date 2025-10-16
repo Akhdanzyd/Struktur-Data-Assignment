@@ -211,7 +211,7 @@ void tampil_pelajaran(pelajaran pel);
 
 ```
 #### Output:
-<img width="179" height="67" alt="Image" src="https://github.com/user-attachments/assets/2e528223-ffc1-49d6-8f93-74e972b373a8" />
+<img width="198" height="46" alt="Image" src="https://github.com/user-attachments/assets/bf177d84-9e31-432f-9f30-4fbd64ee553e" />
 
 Program di atas membuat ADT (Abstract Data Type) pelajaran yang menyimpan data mata pelajaran berupa namaMapel dan kodeMapel, lalu menampilkan isinya menggunakan dua fungsi: create_pelajaran(), tampil_pelajaran()
 
@@ -276,6 +276,7 @@ Ketiga program tersebut menunjukkan penerapan konsep dasar C++ yaitu penggunaan 
 ## Referensi
 Petani Kode. (2024, April 14). Belajar C++ #14: Memahami Pointer di C++.
 Petani Kode. (2019, Mei 18). Belajar Pemrograman C #11: Mengenal Fungsi pada C.
+
 
 
 
