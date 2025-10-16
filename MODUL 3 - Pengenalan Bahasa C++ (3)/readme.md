@@ -148,7 +148,7 @@ float hitungNilaiAkhir(mahasiswa m) {
 
 ```
 #### Output:
-<img width="181" height="344" alt="Image" src="https://github.com/user-attachments/assets/19b1840c-0dad-4565-8ecd-4a1b88c4fcf0" />
+<img width="200" height="188" alt="Image" src="https://github.com/user-attachments/assets/148a3901-4aa5-4881-82ba-30996c7e6882" />
 
 Program ini menyimpan data maksimal 10 mahasiswa dan menghitung nilai akhir tiap mahasiswa menggunakan fungsi dengan rumus 0.3UTS + 0.4UAS + 0.3*Tugas.
 
@@ -276,6 +276,7 @@ Ketiga program tersebut menunjukkan penerapan konsep dasar C++ yaitu penggunaan 
 ## Referensi
 Petani Kode. (2024, April 14). Belajar C++ #14: Memahami Pointer di C++.
 Petani Kode. (2019, Mei 18). Belajar Pemrograman C #11: Mengenal Fungsi pada C.
+
 
 
 
