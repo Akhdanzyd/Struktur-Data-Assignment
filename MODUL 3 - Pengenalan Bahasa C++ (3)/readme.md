@@ -300,19 +300,23 @@ int main() {
 
 ```
 #### Output:
-<img width="181" height="425" alt="Image" src="https://github.com/user-attachments/assets/2a191f12-89c7-446b-82d9-266fc2081c90" />
+<img width="212" height="268" alt="image" src="https://github.com/user-attachments/assets/0cb5e1b3-14f5-49f2-bc89-4e25fb663ac5" />
 
-Program array satu dimensi digunakan untuk menampilkan isi array serta mencari nilai maksimum, minimum, dan rata-rata menggunakan fungsi dan prosedur dengan menu pilihan.
+
+Program membuat dua array 2D berukuran 3×3 dan dua pointer integer, lalu memiliki fungsi untuk menampilkan isi array, menukar elemen antar array pada posisi tertentu, serta menukar nilai yang ditunjuk oleh dua pointer dengan menggunakan konsep fungsi, parameter, dan pointer dalam C++.
 
 #### Full code Screenshot:
-<img width="299" height="483" alt="Image" src="https://github.com/user-attachments/assets/48f2969d-3c9a-4ef6-baa4-b43f12fa387a" />
+<img width="426" height="416" alt="Image" src="https://github.com/user-attachments/assets/90be9a62-a493-4d0b-8b36-32969d85f7a7" />
+
+<img width="424" height="431" alt="Image" src="https://github.com/user-attachments/assets/d712f3c1-dae4-470a-8f72-860d2787f5fb" />
 
 ## Kesimpulan
-Ketiga program tersebut menunjukkan penerapan konsep dasar C++ yaitu penggunaan array, pointer, reference, fungsi, dan prosedur untuk mempermudah pengolahan data seperti operasi matriks, pertukaran nilai variabel, serta pencarian nilai maksimum, minimum, dan rata-rata secara efisien dan terstruktur.
+pada modul ini mengajarkan penerapan konsep Abstract Data Type (ADT) dalam C++, yaitu bagaimana memisahkan definisi tipe data dan operasinya (fungsi/prosedur) dari program utama, serta penerapan manipulasi data terstruktur (array, struct, dan pointer) untuk membangun program yang lebih modular, terorganisir, dan mudah dipelihara.
 
 ## Referensi
 Petani Kode. (2017, September 15). Belajar C++ #09: Menggunakan Array di C++.
 Petani Kode. (2017, September 30). Belajar C++ #14: Memahami Pointer di C++.
+
 
 
 
