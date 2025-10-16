@@ -155,45 +155,65 @@ Program ini menyimpan data maksimal 10 mahasiswa dan menghitung nilai akhir tiap
 #### Full code Screenshot:
 <img width="190" height="377" alt="Image" src="https://github.com/user-attachments/assets/29add33e-bd71-4a35-8641-c0249666987a" />
 
-### 2. [ Berdasarkan guided pointer dan reference sebelumnya, buatlah keduanya dapat menukar nilai dari 3 variabel]
+### 2. [ Soal ke 2]
 
 ```C++
+main.cpp
 #include <iostream>
+#include "pelajaran.h"
 using namespace std;
 
-void tukarDenganPointer(int *x, int *y, int *z) {
-    int temp = *x;
-    *x = *y;
-    *y = *z;
-    *z = temp;
-}
-void tukarDenganReference(int &x, int &y, int &z) {
-    int temp = x;
-    x = y;
-    y = z;
-    z = temp;
-}
 int main() {
-    int a , b , c;
-    cin >> a >> b >> c;
-    cout << "Nilai awal:\n";
-    cout << "a = " << a << ", b = " << b << ", c = " << c << endl;
-
-    tukarDenganPointer(&a, &b, &c);
-    cout << "a = " << a << ", b = " << b << ", c = " << c << endl;
-
-    tukarDenganReference(a, b, c);
-    cout << "a = " << a << ", b = " << b << ", c = " << c << endl;
+    string namapel = "Struktur Data";
+    string kodepel = "STD";
+    
+    pelajaran pel = create_pelajaran(namapel, kodepel);
+    tampil_pelajaran(pel);
 
     return 0;
 }
+
+pelajaran.cpp
+#include <iostream>
+#include "pelajaran.h"
+using namespace std;
+
+pelajaran create_pelajaran(string namapel, string kodepel) {
+    pelajaran p;
+    p.namaMapel = namapel;
+    p.kodeMapel = kodepel;
+    return p;
+}
+
+void tampil_pelajaran(pelajaran pel) {
+    cout << "Nama Mata Pelajaran : " << pel.namaMapel << endl;
+    cout << "Kode Mata Pelajaran : " << pel.kodeMapel << endl;
+}
+
+pelajaran.h
+#ifndef PELAJARAN_H
+#define PELAJARAN_H
+
+#include <string>
+using namespace std;
+
+struct pelajaran {
+    string namaMapel;
+    string kodeMapel;
+};
+
+pelajaran create_pelajaran(string namapel, string kodepel);
+void tampil_pelajaran(pelajaran pel);
+
+#endif
+
 
 
 ```
 #### Output:
 <img width="179" height="67" alt="Image" src="https://github.com/user-attachments/assets/2e528223-ffc1-49d6-8f93-74e972b373a8" />
 
-Program pertukaran nilai dengan pointer dan reference digunakan untuk menukar nilai dari tiga variabel menggunakan dua cara berbeda, yaitu melalui alamat memori (pointer) dan referensi variabel.
+Program di atas membuat ADT (Abstract Data Type) pelajaran yang menyimpan data mata pelajaran berupa namaMapel dan kodeMapel, lalu menampilkan isinya menggunakan dua fungsi: create_pelajaran(), tampil_pelajaran()
 
 #### Full code Screenshot:
 <img width="347" height="312" alt="Image" src="https://github.com/user-attachments/assets/54b1990a-936c-4524-ab5c-4298141fbf69" />
@@ -256,6 +276,7 @@ Ketiga program tersebut menunjukkan penerapan konsep dasar C++ yaitu penggunaan 
 ## Referensi
 Petani Kode. (2024, April 14). Belajar C++ #14: Memahami Pointer di C++.
 Petani Kode. (2019, Mei 18). Belajar Pemrograman C #11: Mengenal Fungsi pada C.
+
 
 
 
