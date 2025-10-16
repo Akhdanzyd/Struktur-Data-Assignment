@@ -216,50 +216,87 @@ void tampil_pelajaran(pelajaran pel);
 Program di atas membuat ADT (Abstract Data Type) pelajaran yang menyimpan data mata pelajaran berupa namaMapel dan kodeMapel, lalu menampilkan isinya menggunakan dua fungsi: create_pelajaran(), tampil_pelajaran()
 
 #### Full code Screenshot:
-<img width="347" height="312" alt="Image" src="https://github.com/user-attachments/assets/54b1990a-936c-4524-ab5c-4298141fbf69" />
+<img width="332" height="188" alt="Image" src="https://github.com/user-attachments/assets/679bfc31-5f9d-46ec-bab6-043f00487d4b" />
 
-### 3. [Diketahui sebuah array 1 dimensi sebagai berikut :  
-arrA = {11, 8, 5, 7, 12, 26, 3, 54, 33, 55} 
-Buatlah program yang dapat mencari nilai minimum, maksimum, dan rata – rata dari 
-array tersebut! Gunakan function cariMinimum() untuk mencari nilai minimum dan 
-function cariMaksimum() untuk mencari nilai maksimum, serta gunakan prosedur 
-hitungRataRata() untuk menghitung nilai rata – rata! Buat program menggunakan 
-menu switch-case seperti berikut ini : 
---- Menu Program Array --- 
-1. Tampilkan isi array 
-2. cari nilai maksimum 
-3. cari nilai minimum 
-4. Hitung nilai rata - rata]
+<img width="377" height="217" alt="Image" src="https://github.com/user-attachments/assets/75d0f91a-bb90-406b-8526-49e205fc65e0" />
+
+<img width="351" height="210" alt="Image" src="https://github.com/user-attachments/assets/8efa3213-18e1-46c8-b7a6-bb4c7fa100e8" />
+
+### 3. [3. Buatlah program dengan ketentuan : - 2 buah array 2D integer berukuran 3x3 dan 2 buah pointer integer - fungsi/prosedur yang menampilkan isi sebuah array integer 2D - fungsi/prosedur yang akan menukarkan isi dari 2 array integer 2D pada posisi tertentu - fungsi/prosedur yang akan menukarkan isi dari variabel yang ditunjuk oleh 2 buah 
+pointer]
 
 ```C++
 #include <iostream>
 using namespace std;
 
-int main() {
-    int n;
-    cout << "Masukkan angka: ";
-    cin >> n;
-
-    for (int i = n; i >= 1; i--) {
-        for (int s = n; s > i; s--) {
-            cout << "  "; 
-        }
-        for (int j = i; j >= 1; j--) {
-            cout << j << " ";
-        }
-        cout << "* ";
-        for (int j = 1; j <= i; j++) {
-            cout << j << " ";
+void tampilArray(int arr[3][3]) {
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            cout << arr[i][j] << "\t";
         }
         cout << endl;
     }
-    for (int s = 0; s < n; s++) {
-        cout << "  "; 
+}
+
+void tukarArrayPosisi(int arr1[3][3], int arr2[3][3], int baris, int kolom) {
+    int temp = arr1[baris][kolom];
+    arr1[baris][kolom] = arr2[baris][kolom];
+    arr2[baris][kolom] = temp;
+}
+
+void tukarArraySemua(int arr1[3][3], int arr2[3][3]) {
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            int temp = arr1[i][j];
+            arr1[i][j] = arr2[i][j];
+            arr2[i][j] = temp;
+        }
     }
-    cout << "*\n";
+}
+
+void tukarPointer(int *p1, int *p2) {
+    int temp = *p1;
+    *p1 = *p2;
+    *p2 = temp;
+}
+
+int main() {
+    int A[3][3] = {
+        {1, 2, 3},
+        {4, 5, 6},
+        {7, 8, 9}
+    };
+
+    int B[3][3] = {
+        {9, 8, 7},
+        {6, 5, 4},
+        {3, 2, 1}
+    };
+
+    cout << "Array A sebelum ditukar:\n";
+    tampilArray(A);
+    cout << "\nArray B sebelum ditukar:\n";
+    tampilArray(B);
+
+    tukarArraySemua(A, B);
+
+    cout << "\nSetelah menukar seluruh isi array:\n";
+    cout << "Array A:\n";
+    tampilArray(A);
+    cout << "\nArray B:\n";
+    tampilArray(B);
+
+    int x = 10, y = 20;
+    int *ptr1 = &x;
+    int *ptr2 = &y;
+
+    cout << "\nSebelum tukar pointer: x = " << x << ", y = " << y << endl;
+    tukarPointer(ptr1, ptr2);
+    cout << "Setelah tukar pointer: x = " << x << ", y = " << y << endl;
 
     return 0;
 }
+
 
 ```
 #### Output:
@@ -274,8 +311,10 @@ Program array satu dimensi digunakan untuk menampilkan isi array serta mencari n
 Ketiga program tersebut menunjukkan penerapan konsep dasar C++ yaitu penggunaan array, pointer, reference, fungsi, dan prosedur untuk mempermudah pengolahan data seperti operasi matriks, pertukaran nilai variabel, serta pencarian nilai maksimum, minimum, dan rata-rata secara efisien dan terstruktur.
 
 ## Referensi
-Petani Kode. (2024, April 14). Belajar C++ #14: Memahami Pointer di C++.
-Petani Kode. (2019, Mei 18). Belajar Pemrograman C #11: Mengenal Fungsi pada C.
+Petani Kode. (2017, September 15). Belajar C++ #09: Menggunakan Array di C++.
+Petani Kode. (2017, September 30). Belajar C++ #14: Memahami Pointer di C++.
+
+
 
 
 
