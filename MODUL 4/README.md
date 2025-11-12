@@ -353,8 +353,7 @@ int main() {
 ```
 #### Output:
 <img width="635" height="35" alt="Image" src="https://github.com/user-attachments/assets/8a55249a-d241-4ffb-b30a-10a78f256605" />
-Program di atas membuat ADT (Abstract Data Type) pelajaran yang menyimpan data mata pelajaran berupa namaMapel dan kodeMapel, lalu menampilkan isinya menggunakan dua fungsi: create_pelajaran(), tampil_pelajaran()
-
+Pada soal 1, dilakukan pembuatan dan implementasi ADT Singly Linked List menggunakan prosedur createList, alokasi, insertFirst, dan printInfo untuk membentuk serta menampilkan isi list secara berurutan.
 #### Full code Screenshot:
 
 <img width="239" height="328" alt="Image" src="https://github.com/user-attachments/assets/0ff9e9a6-8fca-4c75-8fba-c604f6c7f25a" />
@@ -528,24 +527,25 @@ int main() {
 
 ```
 #### Output:
-<img width="635" height="35" alt="Image" src="https://github.com/user-attachments/assets/8a55249a-d241-4ffb-b30a-10a78f256605" />
-Program di atas membuat ADT (Abstract Data Type) pelajaran yang menyimpan data mata pelajaran berupa namaMapel dan kodeMapel, lalu menampilkan isinya menggunakan dua fungsi: create_pelajaran(), tampil_pelajaran()
-
+<img width="634" height="77" alt="Image" src="https://github.com/user-attachments/assets/f61ed993-1ccd-438b-8697-7ffdfe48f7c2" />
+dilakukan berbagai operasi penghapusan node pada Singly Linked List menggunakan deleteFirst, deleteLast, dan deleteAfter, kemudian menghitung jumlah node dengan nbList dan mengosongkan seluruh list menggunakan deleteList.
 #### Full code Screenshot:
 
-<img width="239" height="328" alt="Image" src="https://github.com/user-attachments/assets/0ff9e9a6-8fca-4c75-8fba-c604f6c7f25a" />
 
-<img width="252" height="388" alt="Image" src="https://github.com/user-attachments/assets/db388a3d-9cf6-4669-bb0d-3a7758d7121e" />
 
-<img width="263" height="240" alt="Image" src="https://github.com/user-attachments/assets/9b6b0ed7-93a5-47e9-8cb3-338b9c301c08" />
+<img width="242" height="404" alt="Image" src="https://github.com/user-attachments/assets/038b7d1f-9eab-4df5-89c4-b84c281daf1f" />
+
+<img width="287" height="419" alt="Image" src="https://github.com/user-attachments/assets/2248780d-3abb-4db1-a5f1-f26a7af5af40" />
+
+<img width="209" height="351" alt="Image" src="https://github.com/user-attachments/assets/3e8d4854-76d5-4f35-b497-fe8c69766a5c" />
+
+<img width="344" height="380" alt="Image" src="https://github.com/user-attachments/assets/ef46d4fe-9d65-4c62-af36-4c3ebf2a953a" />
 
 ## Kesimpulan
-pada modul ini mengajarkan penerapan konsep Abstract Data Type (ADT) dalam C++, yaitu bagaimana memisahkan definisi tipe data dan operasinya (fungsi/prosedur) dari program utama, serta penerapan manipulasi data terstruktur (array, struct, dan pointer) untuk membangun program yang lebih modular, terorganisir, dan mudah dipelihara.
+Pada praktikum ini dilakukan pembuatan dan implementasi ADT Singly Linked List menggunakan prosedur createList, alokasi, insertFirst, dan printInfo untuk membentuk serta menampilkan isi list secara berurutan, kemudian dilanjutkan dengan penerapan operasi penghapusan node menggunakan deleteFirst, deleteLast, dan deleteAfter, perhitungan jumlah node dengan nbList, serta penghapusan seluruh isi list menggunakan deleteList sehingga struktur data dapat dikelola secara dinamis dan efisien
 
 ## Referensi
-Petani Kode. (2017, September 15). Belajar C++ #09: Menggunakan Array di C++.
-Petani Kode. (2017, September 30). Belajar C++ #14: Memahami Pointer di C++.
-
+Petanikode. (n.d.). Belajar Struktur Data: Linked List pada C++.
 
 
 
