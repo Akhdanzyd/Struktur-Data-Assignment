@@ -262,67 +262,94 @@ int main(){
 
 ### 1. [ Buatlah ADT Singly Linked list sebagai berikut di dalam file “Singlylist.h” kemudian buatlah implementasi dari procedure-procedure yang digunakan didalam file “Singlylist.cpp”]
 
+singlylist.h
 ```C++
+#ifndef SINGLYLIST_H
+#define SINGLYLIST_H
+
 #include <iostream>
 using namespace std;
 
-struct mahasiswa {
-    char nama[30];
-    char nim[15];
-    float uts, uas, tugas, nilaiAkhir;
+typedef int infotype;
+
+struct ElmList {
+    infotype info;
+    ElmList* next;
 };
 
-void inputMhs(mahasiswa &m);
-float hitungNilaiAkhir(mahasiswa m);
+typedef ElmList* address;
+
+struct List {
+    address First;
+};
+
+// Deklarasi prosedur/fungsi
+void createList(List &L);
+address alokasi(infotype x);
+void dealokasi(address &P);
+void insertFirst(List &L, address P);
+void printInfo(List L);
+
+#endif
+
+
+```
+singlylist.cpp
+
+```c++
+#include "Singlylist.h"
+
+void createList(List &L) {
+    L.First = NULL;
+}
+
+address alokasi(infotype x) {
+    address P = new ElmList;
+    P->info = x;
+    P->next = NULL;
+    return P;
+}
+
+void dealokasi(address &P) {
+    delete P;
+    P = NULL;
+}
+
+void insertFirst(List &L, address P) {
+    P->next = L.First;
+    L.First = P;
+}
+
+void printInfo(List L) {
+    address P = L.First;
+    while (P != NULL) {
+        cout << P->info << " ";
+        P = P->next;
+    }
+    cout << endl;
+}
+
+```
+main.cpp
+```c++
+#include "Singlylist.h"
 
 int main() {
-    mahasiswa mhs[10];
-    int n;
+    List L;
+    address P1, P2, P3, P4, P5 = NULL;
 
-    cout << "Masukkan jumlah mahasiswa (maks 10): ";
-    cin >> n;
+    createList(L);
 
-    if (n > 10) {
-        cout << "Jumlah mahasiswa tidak boleh lebih dari 10!" << endl;
-        return 0;
-    }
+    P1 = alokasi(2); insertFirst(L, P1);
+    P2 = alokasi(0); insertFirst(L, P2);
+    P3 = alokasi(8); insertFirst(L, P3);
+    P4 = alokasi(12); insertFirst(L, P4);
+    P5 = alokasi(9); insertFirst(L, P5);
 
-    for (int i = 0; i < n; i++) {
-        cout << "\nMahasiswa ke-" << i + 1 << endl;
-        inputMhs(mhs[i]);
-        mhs[i].nilaiAkhir = hitungNilaiAkhir(mhs[i]);
-    }
-
-    cout << "\n=== Data Mahasiswa ===\n";
-    for (int i = 0; i < n; i++) {
-        cout << "\nNama        : " << mhs[i].nama;
-        cout << "\nNIM         : " << mhs[i].nim;
-        cout << "\nUTS         : " << mhs[i].uts;
-        cout << "\nUAS         : " << mhs[i].uas;
-        cout << "\nTugas       : " << mhs[i].tugas;
-        cout << "\nNilai Akhir : " << mhs[i].nilaiAkhir << endl;
-    }
+    printInfo(L);
 
     return 0;
 }
-
-void inputMhs(mahasiswa &m) {
-    cout << "Input nama   : ";
-    cin >> m.nama;
-    cout << "Input NIM    : ";
-    cin >> m.nim;
-    cout << "Input nilai UTS   : ";
-    cin >> m.uts;
-    cout << "Input nilai UAS   : ";
-    cin >> m.uas;
-    cout << "Input nilai Tugas : ";
-    cin >> m.tugas;
-}
-
-float hitungNilaiAkhir(mahasiswa m) {
-    return 0.3 * m.uts + 0.4 * m.uas + 0.3 * m.tugas;
-}
-
 
 ```
 #### Output:
