@@ -283,7 +283,6 @@ struct List {
     address First;
 };
 
-// Deklarasi prosedur/fungsi
 void createList(List &L);
 address alokasi(infotype x);
 void dealokasi(address &P);
@@ -353,80 +352,192 @@ int main() {
 
 ```
 #### Output:
-<img width="200" height="188" alt="Image" src="https://github.com/user-attachments/assets/148a3901-4aa5-4881-82ba-30996c7e6882" />
-
-Program ini menyimpan data maksimal 10 mahasiswa dan menghitung nilai akhir tiap mahasiswa menggunakan fungsi dengan rumus 0.3UTS + 0.4UAS + 0.3*Tugas.
+<img width="635" height="35" alt="Image" src="https://github.com/user-attachments/assets/8a55249a-d241-4ffb-b30a-10a78f256605" />
+Program di atas membuat ADT (Abstract Data Type) pelajaran yang menyimpan data mata pelajaran berupa namaMapel dan kodeMapel, lalu menampilkan isinya menggunakan dua fungsi: create_pelajaran(), tampil_pelajaran()
 
 #### Full code Screenshot:
-<img width="281" height="490" alt="Image" src="https://github.com/user-attachments/assets/f9cfdcc7-e376-492c-bc40-7dea6d1ab59b" />
+
+<img width="239" height="328" alt="Image" src="https://github.com/user-attachments/assets/0ff9e9a6-8fca-4c75-8fba-c604f6c7f25a" />
+
+<img width="252" height="388" alt="Image" src="https://github.com/user-attachments/assets/db388a3d-9cf6-4669-bb0d-3a7758d7121e" />
+
+<img width="263" height="240" alt="Image" src="https://github.com/user-attachments/assets/9b6b0ed7-93a5-47e9-8cb3-338b9c301c08" />
 
 ### 2. [Dari soal Latihan pertama, lakukan penghapusan node 9 menggunakan deleteFirst(), node 2 menggunakan deleteLast(), dan node 8 menggunakan deleteAfter(). Kemudian tampilkan jumlah node yang tersimpan menggunakan nbList() dan lakukan penghapusan seluruh node menggunakan deleteList(). Output yang diharapkan : ]
 
+singlylist.h
 ```C++
-main.cpp
+#ifndef SINGLYLIST_H
+#define SINGLYLIST_H
+
 #include <iostream>
-#include "pelajaran.h"
 using namespace std;
 
-int main() {
-    string namapel = "Struktur Data";
-    string kodepel = "STD";
-    
-    pelajaran pel = create_pelajaran(namapel, kodepel);
-    tampil_pelajaran(pel);
+typedef int infotype;
 
-    return 0;
-}
-
-pelajaran.cpp
-#include <iostream>
-#include "pelajaran.h"
-using namespace std;
-
-pelajaran create_pelajaran(string namapel, string kodepel) {
-    pelajaran p;
-    p.namaMapel = namapel;
-    p.kodeMapel = kodepel;
-    return p;
-}
-
-void tampil_pelajaran(pelajaran pel) {
-    cout << "Nama Mata Pelajaran : " << pel.namaMapel << endl;
-    cout << "Kode Mata Pelajaran : " << pel.kodeMapel << endl;
-}
-
-pelajaran.h
-#ifndef PELAJARAN_H
-#define PELAJARAN_H
-
-#include <string>
-using namespace std;
-
-struct pelajaran {
-    string namaMapel;
-    string kodeMapel;
+struct ElmList {
+    infotype info;
+    ElmList* next;
 };
 
-pelajaran create_pelajaran(string namapel, string kodepel);
-void tampil_pelajaran(pelajaran pel);
+typedef ElmList* address;
+
+struct List {
+    address First;
+};
+
+void createList(List &L);
+address alokasi(infotype x);
+void dealokasi(address &P);
+
+void insertFirst(List &L, address P);
+void deleteFirst(List &L);
+void deleteLast(List &L);
+void deleteAfter(address Prec);
+
+int nbList(List L);
+void printInfo(List L);
+void deleteList(List &L);
 
 #endif
 
 
+```
+singlylist.cpp
+
+```c++
+#include "Singlylist.h"
+
+void createList(List &L) {
+    L.First = NULL;
+}
+
+address alokasi(infotype x) {
+    address P = new ElmList;
+    P->info = x;
+    P->next = NULL;
+    return P;
+}
+
+void dealokasi(address &P) {
+    delete P;
+    P = NULL;
+}
+
+void insertFirst(List &L, address P) {
+    P->next = L.First;
+    L.First = P;
+}
+
+void deleteFirst(List &L) {
+    if (L.First != NULL) {
+        address P = L.First;
+        L.First = L.First->next;
+        dealokasi(P);
+    }
+}
+
+void deleteLast(List &L) {
+    if (L.First != NULL) {
+        if (L.First->next == NULL) {
+            dealokasi(L.First);
+            L.First = NULL;
+        } else {
+            address Q = L.First;
+            while (Q->next->next != NULL) {
+                Q = Q->next;
+            }
+            address P = Q->next;
+            Q->next = NULL;
+            dealokasi(P);
+        }
+    }
+}
+
+void deleteAfter(address Prec) {
+    if (Prec != NULL && Prec->next != NULL) {
+        address P = Prec->next;
+        Prec->next = P->next;
+        dealokasi(P);
+    }
+}
+
+int nbList(List L) {
+    int count = 0;
+    address P = L.First;
+    while (P != NULL) {
+        count++;
+        P = P->next;
+    }
+    return count;
+}
+
+void printInfo(List L) {
+    address P = L.First;
+    while (P != NULL) {
+        cout << P->info << " ";
+        P = P->next;
+    }
+    cout << endl;
+}
+
+void deleteList(List &L) {
+    address P;
+    while (L.First != NULL) {
+        P = L.First;
+        L.First = L.First->next;
+        dealokasi(P);
+    }
+}
+
+
+```
+main.cpp
+```c++
+#include "Singlylist.h"
+
+int main() {
+    List L;
+    address P1, P2, P3, P4, P5 = NULL;
+
+    createList(L);
+
+    P1 = alokasi(2); insertFirst(L, P1);
+    P2 = alokasi(0); insertFirst(L, P2);
+    P3 = alokasi(8); insertFirst(L, P3);
+    P4 = alokasi(12); insertFirst(L, P4);
+    P5 = alokasi(9); insertFirst(L, P5);
+
+    deleteFirst(L);
+
+    deleteLast(L);
+
+    deleteAfter(L.First);
+
+    printInfo(L);
+
+    cout << "Jumlah node : " << nbList(L) << endl << endl;
+
+    deleteList(L);
+    cout << "- List Berhasil Terhapus -" << endl;
+    cout << "Jumlah node : " << nbList(L) << endl;
+
+    return 0;
+}
+
 
 ```
 #### Output:
-<img width="198" height="46" alt="Image" src="https://github.com/user-attachments/assets/bf177d84-9e31-432f-9f30-4fbd64ee553e" />
-
+<img width="635" height="35" alt="Image" src="https://github.com/user-attachments/assets/8a55249a-d241-4ffb-b30a-10a78f256605" />
 Program di atas membuat ADT (Abstract Data Type) pelajaran yang menyimpan data mata pelajaran berupa namaMapel dan kodeMapel, lalu menampilkan isinya menggunakan dua fungsi: create_pelajaran(), tampil_pelajaran()
 
 #### Full code Screenshot:
-<img width="332" height="188" alt="Image" src="https://github.com/user-attachments/assets/679bfc31-5f9d-46ec-bab6-043f00487d4b" />
 
-<img width="377" height="217" alt="Image" src="https://github.com/user-attachments/assets/75d0f91a-bb90-406b-8526-49e205fc65e0" />
+<img width="239" height="328" alt="Image" src="https://github.com/user-attachments/assets/0ff9e9a6-8fca-4c75-8fba-c604f6c7f25a" />
 
-<img width="351" height="210" alt="Image" src="https://github.com/user-attachments/assets/8efa3213-18e1-46c8-b7a6-bb4c7fa100e8" />
+<img width="252" height="388" alt="Image" src="https://github.com/user-attachments/assets/db388a3d-9cf6-4669-bb0d-3a7758d7121e" />
 
+<img width="263" height="240" alt="Image" src="https://github.com/user-attachments/assets/9b6b0ed7-93a5-47e9-8cb3-338b9c301c08" />
 
 ## Kesimpulan
 pada modul ini mengajarkan penerapan konsep Abstract Data Type (ADT) dalam C++, yaitu bagaimana memisahkan definisi tipe data dan operasinya (fungsi/prosedur) dari program utama, serta penerapan manipulasi data terstruktur (array, struct, dan pointer) untuk membangun program yang lebih modular, terorganisir, dan mudah dipelihara.
