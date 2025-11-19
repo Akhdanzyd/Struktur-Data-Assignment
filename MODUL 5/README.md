@@ -232,7 +232,7 @@ address findElm(List L, infotype x) {
     address P = L.First;
     while (P != NULL) {
         if (P->info == x) {
-            return P;        // ditemukan
+            return P;        
         }
         P = P->next;
     }
@@ -283,16 +283,16 @@ int main() {
 
 ```
 #### Output:
-<img width="635" height="35" alt="Image" src="https://github.com/user-attachments/assets/8a55249a-d241-4ffb-b30a-10a78f256605" />
+<img width="272" height="45" alt="Image" src="https://github.com/user-attachments/assets/69d82a88-cf0c-4e58-8037-c8fb1a281f65" />
 Pada soal diatas, menekankan pemahaman konsep serta analisis struktur atau proses yang diberikan untuk menghasilkan solusi yang tepat, konsisten, dan efisien sesuai ketentuan.
 #### Full code Screenshot:
 
-<img width="239" height="328" alt="Image" src="https://github.com/user-attachments/assets/0ff9e9a6-8fca-4c75-8fba-c604f6c7f25a" />
 
-<img width="252" height="388" alt="Image" src="https://github.com/user-attachments/assets/db388a3d-9cf6-4669-bb0d-3a7758d7121e" />
+<img width="280" height="376" alt="Image" src="https://github.com/user-attachments/assets/bec18bbe-7363-4123-9f88-fba3d519f5a7" />
 
-<img width="263" height="240" alt="Image" src="https://github.com/user-attachments/assets/9b6b0ed7-93a5-47e9-8cb3-338b9c301c08" />
+<img width="186" height="452" alt="Image" src="https://github.com/user-attachments/assets/c576b0e9-4f1e-4c1d-9459-b7c3faf698ca" />
 
+<img width="425" height="347" alt="Image" src="https://github.com/user-attachments/assets/f0281dd9-e469-4d81-ae2f-a26c53704dd5" />
 
 
 ## Kesimpulan
@@ -300,6 +300,7 @@ Pada praktikum ini dilakukan pembuatan dan implementasi ADT Singly Linked List m
 
 ## Referensi
 Petanikode. (n.d.). Belajar Struktur Data: Linked List pada C++.
+
 
 
 
