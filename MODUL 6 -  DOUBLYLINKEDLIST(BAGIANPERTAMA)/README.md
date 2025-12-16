@@ -1,211 +1,153 @@
-# <h1 align="center">SINGLY LINKED LIST (bagian kedua)  </h1>
+# <h1 align="center">  DOUBLYLINKEDLIST(BAGIANPERTAMA)  </h1>
 <p align="center">Akhdan Ziyad</p>
 
 ## Dasar Teori
-
-Singly Linked List adalah struktur data dinamis yang terdiri dari sejumlah node saling terhubung satu arah melalui pointer. Setiap node memiliki dua bagian, yaitu data dan pointer yang menunjuk ke node berikutnya. Struktur ini fleksibel karena dapat bertambah atau berkurang sesuai kebutuhan tanpa alokasi memori tetap seperti array. Operasi dasarnya meliputi pembuatan, penambahan, penghapusan, dan penelusuran node. Kelebihannya efisien dalam penyisipan dan penghapusan data, sedangkan kekurangannya memerlukan memori tambahan untuk pointer dan hanya dapat ditelusuri satu arah.
+DoublyLinkedlist adalah linked list yang masing–masing elemennya memiliki 2 successor, yaitu successor yang menunjuk pada elemen sebelumnya(prev) dan successor yang menunjuk pada elemen sesudahnya(next).
 ## Guided 
 
-### 1. [SLL  ]
+### 1. [DLL]
 
 ```C++
-//prosedur-prosedur untuk searching data
-//prosedur untuk mencari node berdasarkan data
-void FindNodeByData(linkedlist list, string data){
-    if(isEmpty(list) == true){
-        cout << "List kosong!" << endl;
-    } else {
-        address nodeBantu = list.first;
-        int posisi = 0;
-        bool found = false;
-        while(nodeBantu != Nil){
-            posisi++;
-            if(nodeBantu->isidata.nama == data){
-                cout << "Data " << data << " ditemukan pada posisi ke-" << posisi << "!" << endl;
-                cout << "Nama Buah : " << nodeBantu->isidata.nama << ", Jumlah : " << nodeBantu->isidata.jumlah << ", Harga : " << nodeBantu->isidata.harga << endl;
-                found = true;
-                break;
-            }
-            nodeBantu = nodeBantu->next;
-        }
-        if(found == false){
-            cout << "Node dengan data " << data << " tidak ditemukan!" << endl;
-        }
-    }
-    cout << endl;
-}
-
-//prosedur untuk mencari node berdasarkan alamat node
-void FindNodeByAddress(linkedlist list, address node) {
-    if(isEmpty(list) == true) {
-        cout << "List kosong!" << endl;
-    } else {
-        address nodeBantu = list.first;
-        int posisi = 0;
-        bool found = false;
-        while (nodeBantu != Nil) {
-            posisi++;
-            if(nodeBantu == node) {
-                cout << "Node ditemukan pada posisi ke-" << posisi << "!" << endl;
-                cout << "Alamat node : " << nodeBantu << endl;
-                cout << "Nama Buah : " << nodeBantu->isidata.nama << ", Jumlah : " << nodeBantu->isidata.jumlah << ", Harga : " << nodeBantu->isidata.harga << endl;
-                found = true;
-                break;
-            }
-            nodeBantu = nodeBantu->next;
-        }
-        if(found == false) {
-            cout << "Node dengan alamat " << node << " tidak ditemukan dalam list!" << endl;
-        }
-    }
-    cout << endl;
-}
-
-//prosedur untuk mencari node berdasarkan range data (range harga)
-void FindNodeByRange(linkedlist list, float hargaAwal, float hargaAkhir) {
-    if(isEmpty(list) == true) {
-        cout << "List kosong!" << endl;
-    } else {
-        address nodeBantu = list.first;
-        int posisi = 0;
-        bool found = false;
-        cout << "--- Buah dalam range harga " << hargaAwal << " - " << hargaAkhir << " ---" << endl;
-        cout << "-------------------------------------------" << endl;
-        while (nodeBantu != Nil) {
-            posisi++;
-            float harga = nodeBantu->isidata.harga;
-            if(harga >= hargaAwal && harga <= hargaAkhir) {
-                cout << "Data ditemukan pada posisi ke-" << posisi << " :" << endl;
-                cout << "Nama Buah : " << nodeBantu->isidata.nama << ", Jumlah : " << nodeBantu->isidata.jumlah << ", Harga : " << nodeBantu->isidata.harga << endl;
-                cout << "-------------------------------------------" << endl;
-                found = true;
-            }
-            nodeBantu = nodeBantu->next;
-        }
-        if(found == false) {
-            cout << "Tidak ada data buah dalam range harga tersebut!" << endl;
-            cout << "-------------------------------------------" << endl;
-        }
-    }
-    cout << endl;
-}
-
-
-*main.cpp*
-C++
-#include "listBuah.h"
-
-#include<iostream>
+#include <iostream>
+#define Nil NULL
 using namespace std;
 
-int main(){
-    linkedlist List;
-    address nodeA, nodeB, nodeC, nodeD, nodeE = Nil;
-    createList(List);
+typedef int infotype; // Definisikan tipe data infotype sebagai integer untuk menyimpan informasi elemen
+typedef struct elmlist *address; // Definisikan tipe address sebagai pointer ke struct elmlist
 
-    dataBuah dtBuah;
+struct elmlist {
+    infotype info; // Deklarasikan field info untuk menyimpan data elemen
+    address next;
+    address prev;
+};
 
-    nodeA = alokasi("Jeruk", 100, 3000);
-    nodeB = alokasi("Apel", 75, 4000);
-    nodeC = alokasi("Pir", 87, 5000);
-    nodeD = alokasi("Semangka", 43, 11500);
-    nodeE = alokasi("Durian", 15, 31450);
+struct List { 
+    address first; 
+    address last; 
+}; 
 
-    insertFirst(List, nodeA);
-    insertLast(List, nodeB);
-    insertAfter(List, nodeC, nodeA);
-    insertAfter(List, nodeD, nodeC);
-    insertLast(List, nodeE);
+void insertFirst(List &L, address P) { 
+    P->next = L.first; // Set pointer next dari P ke elemen pertama saat ini
+    P->prev = Nil; // Set pointer prev dari P ke Nil karena menjadi elemen pertama
+    if (L.first != Nil) L.first->prev = P; // Jika list tidak kosong, set prev elemen pertama lama ke P
+    else L.last = P; // Jika list kosong, set last juga ke P
+    L.first = P; // Update first list menjadi P
+} 
 
-    cout << "--- ISI LIST SETELAH DILAKUKAN INSERT ---" << endl;
-    printList(List);
-    cout << "Jumlah node : " << nbList(List) << endl;
-    cout << endl;
+void insertLast(List &L, address P) { 
+    P->prev = L.last; // Set pointer prev dari P ke elemen terakhir saat ini
+    P->next = Nil; // Set pointer next dari P ke Nil karena menjadi elemen terakhir
+    if (L.last != Nil) L.last->next = P; // Jika list tidak kosong, set next elemen terakhir lama ke P
+    else L.first = P; // Jika list kosong, set first juga ke P
+    L.last = P; // Update last list menjadi P
+} 
 
-   updateFirst(List);
-   updateLast(List);
-   updateAfter(List, nodeD);
+void insertAfter(List &L, address P, address R) { // Definisikan fungsi insertAfter untuk menyisipkan elemen setelah R
+    P->next = R->next; // Set pointer next dari P ke elemen setelah R
+    P->prev = R; // Set pointer prev dari P ke R
+    if (R->next != Nil) R->next->prev = P; // Jika ada elemen setelah R, set prev elemen tersebut ke P
+    else L.last = P; // Jika R adalah terakhir, update last menjadi P
+    R->next = P; // Set next dari R ke P
+}
 
-    cout << "--- ISI LIST SETELAH DILAKUKAN UPDATE ---" << endl;
-    printList(List);
-    cout << "Jumlah node : " << nbList(List) << endl;
-    cout << endl;
+address alokasi(infotype x) { // Definisikan fungsi alokasi untuk membuat elemen baru
+    address P = new elmlist; // Alokasikan memori baru untuk elemen
+    P->info = x; // Set info elemen dengan nilai x
+    P->next = Nil; // Set next elemen ke Nil
+    P->prev = Nil; // Set prev elemen ke Nil
+    return P; 
+} 
 
-    FindNodeByData(List, "Kelapa");
-    FindNodeByAddress(List, nodeC);
-    FindNodeByRange(List, 5000, 10000);
+void printInfo(List L) { // Definisikan fungsi printInfo untuk mencetak isi list
+    address P = L.first; // Set P ke elemen pertama list
+    while (P != Nil) { // Loop selama P tidak Nil
+        cout << P->info << " "; // Cetak info dari P 
+        P = P->next; // Pindah ke elemen berikutnya
+    } 
+    cout << endl; 
+}
 
-    delFirst(List);
-    delLast(List);
-    delAfter(List, nodeD, nodeC);
-
-    cout << "--- ISI LIST SETELAH DILAKUKAN DELETE ---" << endl;
-    printList(List);
-    cout << "jumlah node : " << nbList(List) << endl;
-    cout << endl;
-
-    deleteList(List);
-    cout << "--- ISI LIST SETELAH DILAKUKAN HAPUS LIST ---" << endl;
-    printList(List);
-    cout << "jumlah node : " << nbList(List) << endl;
-    cout << endl;
-
-    return 0;
+int main() { 
+    List L; 
+    L.first = Nil; 
+    L.last = Nil;
+    address P1 = alokasi(1); 
+    insertFirst(L, P1); 
+    address P2 = alokasi(2); 
+    insertLast(L, P2); 
+    address P3 = alokasi(3); 
+    insertAfter(L, P3, P1); 
+    printInfo(L); 
+    return 0; 
+}
 
 ```
 ## Unguided 
 
-### 1.Carilah elemen dengan info 8 dengan membuat fungsi baru. fungsi findElm( L : List, x : infotype ) : address dan Hitunglah jumlah total info seluruh elemen (9+12+8+0+2=31).
+### 1.BuatlahADTDoublyLinkedlistsebagaiberikutdidalamfile“Doublylist.h”
 
-singlylist.h
+
+Doublylist.h
 ```C++
-#ifndef SINGLYLIST_H
-#define SINGLYLIST_H
+#ifndef DOUBLYLIST_H
+#define DOUBLYLIST_H
 
 #include <iostream>
+#include <string>
 using namespace std;
 
-typedef int infotype;
+typedef struct kendaraan {
+    string nopol;
+    string warna;
+    int thnBuat;
+} infotype;
 
-struct ElmList {
+typedef struct ElmList *address;
+
+typedef struct ElmList {
     infotype info;
-    ElmList* next;
-};
+    address next;
+    address prev;
+} ElmList;
 
-typedef ElmList* address;
-
-struct List {
+typedef struct {
     address First;
-};
+    address Last;
+} List;
 
-void createList(List &L);
+void CreateList(List &L);
 address alokasi(infotype x);
 void dealokasi(address &P);
-
-void insertFirst(List &L, address P);
+void insertLast(List &L, address P);
 void printInfo(List L);
 
 address findElm(List L, infotype x);
-int sumInfo(List L);
+
+void deleteFirst(List &L, address &P);
+void deleteLast(List &L, address &P);
+void deleteAfter(address Prec, address &P);
 
 #endif
 
 
 
+
 ```
-singlylist.cpp
+Doublylist.cpp
 
 ```c++
-#include "Singlylist.h"
+#include "Doublylist.h"
 
-void createList(List &L) {
+void CreateList(List &L) {
     L.First = NULL;
+    L.Last  = NULL;
 }
 
 address alokasi(infotype x) {
     address P = new ElmList;
     P->info = x;
     P->next = NULL;
+    P->prev = NULL;
     return P;
 }
 
@@ -214,92 +156,190 @@ void dealokasi(address &P) {
     P = NULL;
 }
 
-void insertFirst(List &L, address P) {
-    P->next = L.First;
-    L.First = P;
+void insertLast(List &L, address P) {
+    if (L.First == NULL) {
+        L.First = P;
+        L.Last  = P;
+    } else {
+        P->prev = L.Last;
+        L.Last->next = P;
+        L.Last = P;
+    }
 }
 
 void printInfo(List L) {
     address P = L.First;
+    cout << "\nDATA LIST\n";
     while (P != NULL) {
-        cout << P->info << " ";
+        cout << "Nomor Polisi : " << P->info.nopol << endl;
+        cout << "Warna        : " << P->info.warna << endl;
+        cout << "Tahun        : " << P->info.thnBuat << endl << endl;
         P = P->next;
     }
-    cout << endl;
 }
 
 address findElm(List L, infotype x) {
     address P = L.First;
     while (P != NULL) {
-        if (P->info == x) {
-            return P;        
+        if (P->info.nopol == x.nopol) {
+            return P;
         }
         P = P->next;
     }
-    return NULL;              
+    return NULL;
 }
 
-int sumInfo(List L) {
-    int total = 0;
-    address P = L.First;
-    while (P != NULL) {
-        total += P->info;
-        P = P->next;
+void deleteFirst(List &L, address &P) {
+    P = L.First;
+    if (P != NULL) {
+        if (L.First == L.Last) {
+            L.First = NULL;
+            L.Last  = NULL;
+        } else {
+            L.First = P->next;
+            L.First->prev = NULL;
+            P->next = NULL;
+        }
     }
-    return total;
+}
+
+void deleteLast(List &L, address &P) {
+    P = L.Last;
+    if (P != NULL) {
+        if (L.First == L.Last) {
+            L.First = NULL;
+            L.Last  = NULL;
+        } else {
+            L.Last = P->prev;
+            L.Last->next = NULL;
+            P->prev = NULL;
+        }
+    }
+}
+
+void deleteAfter(address Prec, address &P) {
+    P = Prec->next;
+    if (P != NULL) {
+        Prec->next = P->next;
+        if (P->next != NULL) {
+            P->next->prev = Prec;
+        }
+        P->next = NULL;
+        P->prev = NULL;
+    }
 }
 
 
 ```
 main.cpp
 ```c++
-#include "Singlylist.h"
+#include "Doublylist.h"
 
 int main() {
     List L;
-    address P1, P2, P3, P4, P5 = NULL;
+    infotype x, cari;
+    address P, Prec;
+    int n;
 
-    createList(L);
+    CreateList(L);
 
-    P1 = alokasi(2); insertFirst(L, P1);
-    P2 = alokasi(0); insertFirst(L, P2);
-    P3 = alokasi(8); insertFirst(L, P3);
-    P4 = alokasi(12); insertFirst(L, P4);
-    P5 = alokasi(9); insertFirst(L, P5);
+    cout << "Masukkan jumlah kendaraan: ";
+    cin >> n;
+    cin.ignore();
+
+    // ===== INPUT DATA (SOAL 1 + CEK DUPLIKAT) =====
+    for (int i = 1; i <= n; i++) {
+        cout << "\nData kendaraan ke-" << i << endl;
+
+        cout << "Nomor Polisi : ";
+        getline(cin, x.nopol);
+
+        // 🔴 CEK NOMOR POLISI DUPLIKAT
+        if (findElm(L, x) != NULL) {
+            cout << "Nomor polisi sudah terdaftar!\n";
+            i--;        // ulangi input
+            continue;
+        }
+
+        cout << "Warna        : ";
+        getline(cin, x.warna);
+
+        cout << "Tahun        : ";
+        cin >> x.thnBuat;
+        cin.ignore();
+
+        insertLast(L, alokasi(x));
+    }
 
     printInfo(L);
 
-    if (findElm(L, 8) != NULL) {
-        cout << "8 ditemukan dalam list" << endl;
+    // ===== SOAL 2: CARI DATA =====
+    cout << "Masukkan nomor polisi yang dicari: ";
+    getline(cin, cari.nopol);
+
+    P = findElm(L, cari);
+    if (P != NULL) {
+        cout << "\nData ditemukan\n";
+        cout << "Nomor Polisi : " << P->info.nopol << endl;
+        cout << "Warna        : " << P->info.warna << endl;
+        cout << "Tahun        : " << P->info.thnBuat << endl;
     } else {
-        cout << "8 tidak ditemukan" << endl;
+        cout << "\nData tidak ditemukan\n";
     }
 
-    cout << "Total info dari kelima elemen adalah " << sumInfo(L) << endl;
+    // ===== SOAL 3: HAPUS DATA =====
+    cout << "\nMasukkan nomor polisi yang akan dihapus: ";
+    getline(cin, cari.nopol);
+
+    P = findElm(L, cari);
+    if (P != NULL) {
+        if (P == L.First) {
+            deleteFirst(L, P);
+        } else if (P == L.Last) {
+            deleteLast(L, P);
+        } else {
+            Prec = P->prev;
+            deleteAfter(Prec, P);
+        }
+        dealokasi(P);
+        cout << "Data berhasil dihapus\n";
+    } else {
+        cout << "Data tidak ditemukan\n";
+    }
+
+    printInfo(L);
 
     return 0;
 }
 
 
+
 ```
 #### Output:
-<img width="272" height="45" alt="Image" src="https://github.com/user-attachments/assets/69d82a88-cf0c-4e58-8037-c8fb1a281f65" />
-Pada soal diatas, menekankan pemahaman konsep serta analisis struktur atau proses yang diberikan untuk menghasilkan solusi yang tepat, konsisten, dan efisien sesuai ketentuan.
+<img width="301" height="283" alt="image" src="https://github.com/user-attachments/assets/b73f48a0-eb33-47c3-b35a-4ae5407ac0df" />
+<img width="281" height="71" alt="image" src="https://github.com/user-attachments/assets/29bc8e21-7c9c-4e5d-802c-784822cc28c0" />
+<img width="233" height="86" alt="image" src="https://github.com/user-attachments/assets/076e4844-64c3-411a-8ad2-780811e601fc" />
+
+
+
+
+Pada soal di atas, menekankan pemahaman konsep ADT Doubly Linked List serta analisis struktur data yang digunakan untuk mengelola data kendaraan secara terurut dan dinamis. Penerapan operasi insert, pencarian data menggunakan fungsi findElm, serta penghapusan data dengan prosedur deleteFirst, deleteLast, dan deleteAfter menunjukkan bagaimana setiap proses saling berkaitan untuk menghasilkan solusi yang tepat, konsisten, dan efisien sesuai ketentuan yang diberikan, termasuk validasi agar tidak terjadi duplikasi nomor polisi.
 #### Full code Screenshot:
 
+<img width="286" height="403" alt="image" src="https://github.com/user-attachments/assets/2d3688c7-f2fd-4344-b6dc-b75b668de231" />
 
-<img width="280" height="376" alt="Image" src="https://github.com/user-attachments/assets/bec18bbe-7363-4123-9f88-fba3d519f5a7" />
+<img width="410" height="396" alt="image" src="https://github.com/user-attachments/assets/6435104f-0789-49ca-a5fd-d657df6c204c" />
 
-<img width="186" height="452" alt="Image" src="https://github.com/user-attachments/assets/c576b0e9-4f1e-4c1d-9459-b7c3faf698ca" />
+<img width="256" height="340" alt="image" src="https://github.com/user-attachments/assets/99bcf3b3-1683-4e97-bb40-e487d72a5d4c" />
 
-<img width="425" height="347" alt="Image" src="https://github.com/user-attachments/assets/f0281dd9-e469-4d81-ae2f-a26c53704dd5" />
+<img width="353" height="409" alt="image" src="https://github.com/user-attachments/assets/49ea4706-19f0-48ff-bc58-3f6dc7b70e26" />
 
+<img width="292" height="196" alt="image" src="https://github.com/user-attachments/assets/e6cacd5f-576c-4fa1-961d-574d94a1e914" />
 
 ## Kesimpulan
-Pada praktikum ini dilakukan pembuatan dan implementasi ADT Singly Linked List menggunakan prosedur createList, alokasi, insertFirst, dan printInfo untuk membentuk serta menampilkan isi list secara berurutan, kemudian dilanjutkan dengan penerapan operasi penghapusan node menggunakan deleteFirst, deleteLast, dan deleteAfter, perhitungan jumlah node dengan nbList, serta penghapusan seluruh isi list menggunakan deleteList sehingga struktur data dapat dikelola secara dinamis dan efisien
-
+Doubly Linked List menawarkan kemampuan yang lebih fleksibel dibandingkan Singly Linked List dalam menangani kebutuhan akses dua arah pada data, meskipun memerlukan penggunaan memori yang lebih besar akibat adanya pointer tambahan. Struktur data ini sangat efisien digunakan pada aplikasi yang membutuhkan operasi penambahan dan penghapusan elemen di berbagai posisi dalam list.
 ## Referensi
-Petanikode. (n.d.). Belajar Struktur Data: Linked List pada C++.
+Petani Kode. (n.d.). Belajar Struktur Data: Doubly Linked List pada C++.
 
 
 
