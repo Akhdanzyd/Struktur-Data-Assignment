@@ -1,12 +1,11 @@
-# <h1 align="center">  TREE(BAGIANPERTAMA)  </h1>
+# <h1 align="center">  MULTILINKEDLIST  </h1>
 <p align="center">Akhdan Ziyad</p>
 
 ## Dasar Teori
 Secara harfiah, rekursif berarti suatu proses pengulangan sesuatu dengan cara kesamaan-diri atau suatu proses yang memanggil dirinya sendiri. Prosedur dan fungsi merupakan sub program yang sangat bermanfaat dalam pemrograman, terutama untuk program atau proyek yang besar.
 ## Guided 
 
-### 1. [TREE]
-bst.h
+### 1. [MLL]
 ```C++
 /* buat dahulu elemen yang akan disisipkan */ 
 address_anak alokasiAnak(infotypeanak X){
@@ -497,6 +496,7 @@ Soal ini menekankan pemahaman ADT Circular Doubly Linked List dalam pengelolaan 
 Praktikum ini bertujuan untuk memahami mekanisme kerja Multi Linked List serta proses pengelolaan data di dalamnya, khususnya pada operasi penambahan data di bagian awal, akhir, dan setelah node tertentu, serta menampilkan kembali data secara terstruktur dan berurutan.
 ## Referensi
 Petani Kode. (n.d.). Struktur Data Linked List.
+
 
 
 
