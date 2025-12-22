@@ -5,7 +5,7 @@
 Secara harfiah, rekursif berarti suatu proses pengulangan sesuatu dengan cara kesamaan-diri atau suatu proses yang memanggil dirinya sendiri. Prosedur dan fungsi merupakan sub program yang sangat bermanfaat dalam pemrograman, terutama untuk program atau proyek yang besar.
 ## Guided 
 
-### 1. [DLL]
+### 1. [TREE]
 bst.h
 ```C++
 #ifndef BST_H
@@ -427,230 +427,151 @@ int height(BinTree tree){ //mengembalikan jumlah level tree
 ```
 ## Unguided 
 
-### 1.BuatlahADTDoublyLinkedlistsebagaiberikutdidalamfile“Doublylist.h”
 
-
-Doublylist.h
+bstree.h
 ```C++
-#ifndef DOUBLYLIST_H
-#define DOUBLYLIST_H
+#ifndef BSTREE_H
+#define BSTREE_H
 
-#include <iostream>
-#include <string>
-using namespace std;
+typedef int infotype;
+typedef struct Node* address;
 
-typedef struct kendaraan {
-    string nopol;
-    string warna;
-    int thnBuat;
-} infotype;
-
-typedef struct ElmList *address;
-
-typedef struct ElmList {
+struct Node {
     infotype info;
-    address next;
-    address prev;
-} ElmList;
+    address left;
+    address right;
+};
 
-typedef struct {
-    address First;
-    address Last;
-} List;
+#define Nil NULL
 
-void CreateList(List &L);
 address alokasi(infotype x);
-void dealokasi(address &P);
-void insertLast(List &L, address P);
-void printInfo(List L);
+void insertNode(address &root, infotype x);
+address findNode(infotype x, address root);
 
-address findElm(List L, infotype x);
+void InOrder(address root);
+void PreOrder(address root);
+void PostOrder(address root);
 
-void deleteFirst(List &L, address &P);
-void deleteLast(List &L, address &P);
-void deleteAfter(address Prec, address &P);
+int hitungJumlahNode(address root);
+int hitungTotalInfo(address root);
+int hitungKedalaman(address root, int start);
 
 #endif
 
-
-
-
 ```
-Doublylist.cpp
+bstree.cpp
 
 ```c++
-#include "Doublylist.h"
-
-void CreateList(List &L) {
-    L.First = NULL;
-    L.Last  = NULL;
-}
+#include <iostream>
+#include "bstree.h"
+using namespace std;
 
 address alokasi(infotype x) {
-    address P = new ElmList;
-    P->info = x;
-    P->next = NULL;
-    P->prev = NULL;
-    return P;
+    address p = new Node;
+    p->info = x;
+    p->left = Nil;
+    p->right = Nil;
+    return p;
 }
 
-void dealokasi(address &P) {
-    delete P;
-    P = NULL;
-}
-
-void insertLast(List &L, address P) {
-    if (L.First == NULL) {
-        L.First = P;
-        L.Last  = P;
-    } else {
-        P->prev = L.Last;
-        L.Last->next = P;
-        L.Last = P;
+void insertNode(address &root, infotype x) {
+    if (root == Nil) {
+        root = alokasi(x);
+    } else if (x < root->info) {
+        insertNode(root->left, x);
+    } else if (x > root->info) {
+        insertNode(root->right, x);
     }
 }
 
-void printInfo(List L) {
-    address P = L.First;
-    cout << "\nDATA LIST\n";
-    while (P != NULL) {
-        cout << "Nomor Polisi : " << P->info.nopol << endl;
-        cout << "Warna        : " << P->info.warna << endl;
-        cout << "Tahun        : " << P->info.thnBuat << endl << endl;
-        P = P->next;
+address findNode(infotype x, address root) {
+    if (root == Nil || root->info == x)
+        return root;
+    if (x < root->info)
+        return findNode(x, root->left);
+    return findNode(x, root->right);
+}
+
+void InOrder(address root) {
+    if (root != Nil) {
+        InOrder(root->left);
+        cout << root->info << " - ";
+        InOrder(root->right);
     }
 }
 
-address findElm(List L, infotype x) {
-    address P = L.First;
-    while (P != NULL) {
-        if (P->info.nopol == x.nopol) {
-            return P;
-        }
-        P = P->next;
-    }
-    return NULL;
-}
-
-void deleteFirst(List &L, address &P) {
-    P = L.First;
-    if (P != NULL) {
-        if (L.First == L.Last) {
-            L.First = NULL;
-            L.Last  = NULL;
-        } else {
-            L.First = P->next;
-            L.First->prev = NULL;
-            P->next = NULL;
-        }
+void PreOrder(address root) {
+    if (root != Nil) {
+        cout << root->info << " - ";
+        PreOrder(root->left);
+        PreOrder(root->right);
     }
 }
 
-void deleteLast(List &L, address &P) {
-    P = L.Last;
-    if (P != NULL) {
-        if (L.First == L.Last) {
-            L.First = NULL;
-            L.Last  = NULL;
-        } else {
-            L.Last = P->prev;
-            L.Last->next = NULL;
-            P->prev = NULL;
-        }
+void PostOrder(address root) {
+    if (root != Nil) {
+        PostOrder(root->left);
+        PostOrder(root->right);
+        cout << root->info << " - ";
     }
 }
 
-void deleteAfter(address Prec, address &P) {
-    P = Prec->next;
-    if (P != NULL) {
-        Prec->next = P->next;
-        if (P->next != NULL) {
-            P->next->prev = Prec;
-        }
-        P->next = NULL;
-        P->prev = NULL;
-    }
+int hitungJumlahNode(address root) {
+    if (root == Nil)
+        return 0;
+    return 1 + hitungJumlahNode(root->left) + hitungJumlahNode(root->right);
 }
+
+int hitungTotalInfo(address root) {
+    if (root == Nil)
+        return 0;
+    return root->info + hitungTotalInfo(root->left) + hitungTotalInfo(root->right);
+}
+
+int hitungKedalaman(address root, int start) {
+    if (root == Nil)
+        return start;
+    int kiri = hitungKedalaman(root->left, start + 1);
+    int kanan = hitungKedalaman(root->right, start + 1);
+    return (kiri > kanan) ? kiri : kanan;
+}
+
 
 
 ```
 main.cpp
 ```c++
-#include "Doublylist.h"
+#include <iostream>
+#include "bstree.h"
+using namespace std;
 
 int main() {
-    List L;
-    infotype x, cari;
-    address P, Prec;
-    int n;
+    cout << "Hello World!" << endl;
 
-    CreateList(L);
+    address root = Nil;
+    insertNode(root,1);
+    insertNode(root,2);
+    insertNode(root,6);
+    insertNode(root,4);
+    insertNode(root,5);
+    insertNode(root,3);
+    insertNode(root,6); 
+    insertNode(root,7);
 
-    cout << "Masukkan jumlah kendaraan: ";
-    cin >> n;
-    cin.ignore();
+    InOrder(root);
+    cout << endl;
 
-    // ===== INPUT DATA (SOAL 1 + CEK DUPLIKAT) =====
-    for (int i = 1; i <= n; i++) {
-        cout << "\nData kendaraan ke-" << i << endl;
+    cout << "kedalaman : " << hitungKedalaman(root,0) << endl;
+    cout << "jumlah node : " << hitungJumlahNode(root) << endl;
+    cout << "total : " << hitungTotalInfo(root) << endl;
 
-        cout << "Nomor Polisi : ";
-        getline(cin, x.nopol);
+    cout << "PreOrder : ";
+    PreOrder(root);
+    cout << endl;
 
-        // 🔴 CEK NOMOR POLISI DUPLIKAT
-        if (findElm(L, x) != NULL) {
-            cout << "Nomor polisi sudah terdaftar!\n";
-            i--;        // ulangi input
-            continue;
-        }
-
-        cout << "Warna        : ";
-        getline(cin, x.warna);
-
-        cout << "Tahun        : ";
-        cin >> x.thnBuat;
-        cin.ignore();
-
-        insertLast(L, alokasi(x));
-    }
-
-    printInfo(L);
-
-    // ===== SOAL 2: CARI DATA =====
-    cout << "Masukkan nomor polisi yang dicari: ";
-    getline(cin, cari.nopol);
-
-    P = findElm(L, cari);
-    if (P != NULL) {
-        cout << "\nData ditemukan\n";
-        cout << "Nomor Polisi : " << P->info.nopol << endl;
-        cout << "Warna        : " << P->info.warna << endl;
-        cout << "Tahun        : " << P->info.thnBuat << endl;
-    } else {
-        cout << "\nData tidak ditemukan\n";
-    }
-
-    // ===== SOAL 3: HAPUS DATA =====
-    cout << "\nMasukkan nomor polisi yang akan dihapus: ";
-    getline(cin, cari.nopol);
-
-    P = findElm(L, cari);
-    if (P != NULL) {
-        if (P == L.First) {
-            deleteFirst(L, P);
-        } else if (P == L.Last) {
-            deleteLast(L, P);
-        } else {
-            Prec = P->prev;
-            deleteAfter(Prec, P);
-        }
-        dealokasi(P);
-        cout << "Data berhasil dihapus\n";
-    } else {
-        cout << "Data tidak ditemukan\n";
-    }
-
-    printInfo(L);
+    cout << "PostOrder : ";
+    PostOrder(root);
+    cout << endl;
 
     return 0;
 }
@@ -659,29 +580,27 @@ int main() {
 
 ```
 #### Output:
-<img width="301" height="283" alt="image" src="https://github.com/user-attachments/assets/b73f48a0-eb33-47c3-b35a-4ae5407ac0df" />
-<img width="281" height="71" alt="image" src="https://github.com/user-attachments/assets/29bc8e21-7c9c-4e5d-802c-784822cc28c0" />
-<img width="233" height="86" alt="image" src="https://github.com/user-attachments/assets/076e4844-64c3-411a-8ad2-780811e601fc" />
+<img width="265" height="73" alt="image" src="https://github.com/user-attachments/assets/e8869995-68a9-4658-8d74-e69b2cf8bf8f" />
 
 
 
 
-Pada soal di atas, menekankan pemahaman konsep ADT Doubly Linked List serta analisis struktur data yang digunakan untuk mengelola data kendaraan secara terurut dan dinamis. Penerapan operasi insert, pencarian data menggunakan fungsi findElm, serta penghapusan data dengan prosedur deleteFirst, deleteLast, dan deleteAfter menunjukkan bagaimana setiap proses saling berkaitan untuk menghasilkan solusi yang tepat, konsisten, dan efisien sesuai ketentuan yang diberikan, termasuk validasi agar tidak terjadi duplikasi nomor polisi.
+
+Pada soal di atas, menekankan pemahaman konsep ADT Binary Search Tree (BST) dalam pengelolaan data secara terurut dan dinamis. Implementasi operasi insert, berbagai traversal, serta fungsi perhitungan jumlah node, total nilai, dan kedalaman menunjukkan keterkaitan proses rekursif untuk menghasilkan struktur tree yang valid, konsisten, dan efisien, termasuk penanganan data duplikat agar sesuai dengan aturan BST.
 #### Full code Screenshot:
 
-<img width="286" height="403" alt="image" src="https://github.com/user-attachments/assets/2d3688c7-f2fd-4344-b6dc-b75b668de231" />
+<img width="278" height="278" alt="image" src="https://github.com/user-attachments/assets/43f8ea85-c605-4e62-be22-1fdc8c2b82a1" />
 
-<img width="410" height="396" alt="image" src="https://github.com/user-attachments/assets/6435104f-0789-49ca-a5fd-d657df6c204c" />
+<img width="245" height="460" alt="image" src="https://github.com/user-attachments/assets/1efd5329-eab7-4989-a61d-038e4aa6a234" />
 
-<img width="256" height="340" alt="image" src="https://github.com/user-attachments/assets/99bcf3b3-1683-4e97-bb40-e487d72a5d4c" />
+<img width="359" height="272" alt="image" src="https://github.com/user-attachments/assets/dc6fe351-6e31-47cc-a379-bb0aaffd7033" />
 
-<img width="353" height="409" alt="image" src="https://github.com/user-attachments/assets/49ea4706-19f0-48ff-bc58-3f6dc7b70e26" />
-
-<img width="292" height="196" alt="image" src="https://github.com/user-attachments/assets/e6cacd5f-576c-4fa1-961d-574d94a1e914" />
+<img width="374" height="420" alt="image" src="https://github.com/user-attachments/assets/d94d2d2a-e1e4-48a3-8bd0-1a16c8b8d466" />
 
 ## Kesimpulan
-Doubly Linked List menawarkan kemampuan yang lebih fleksibel dibandingkan Singly Linked List dalam menangani kebutuhan akses dua arah pada data, meskipun memerlukan penggunaan memori yang lebih besar akibat adanya pointer tambahan. Struktur data ini sangat efisien digunakan pada aplikasi yang membutuhkan operasi penambahan dan penghapusan elemen di berbagai posisi dalam list.
+Binary Search Tree (BST) merupakan struktur data yang efektif untuk menyimpan data secara terurut dan hierarkis, dengan dukungan operasi pencarian, penyisipan, dan traversal yang efisien. Meskipun kinerjanya sangat baik pada kondisi tree seimbang, BST tetap membutuhkan pengelolaan yang tepat untuk mencegah struktur menjadi tidak optimal. Oleh karena itu, BST sangat cocok digunakan pada aplikasi yang membutuhkan pengolahan data terurut dan analisis struktur secara rekursif.
 ## Referensi
-Petani Kode. (n.d.). Belajar Struktur Data: Doubly Linked List pada C++.
+Petani Kode. (n.d.). Struktur Data Tree (Pohon) dan Binary Search Tree.
+
 
 
