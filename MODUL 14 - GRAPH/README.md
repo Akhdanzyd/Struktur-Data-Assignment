@@ -6,6 +6,7 @@ Graph merupakan himpunan tidak kosong dari node (vertec) dan garis penghubung (e
 ## Guided 
 
 ### 1. [GRAPH]
+```
 #ifndef GRAPH_H_INCLUDE
 #define GRAPH_H_INCLUDE
 typedefintinfoGraph;
@@ -79,6 +80,7 @@ void addEdge(ElmNodenewNode){
     newEdge.Node = newNode.Next;
     newEdge.Next = newNode.firstEdge;
 }
+```
 ## Unguided 
 
 
@@ -272,6 +274,7 @@ Soal ini menekankan pemahaman ADT Graph tidak berarah dalam merepresentasikan hu
 Praktikum ini bertujuan untuk memahami mekanisme kerja ADT Graph tidak berarah menggunakan representasi adjacency list, khususnya pada proses penambahan simpul (node), penghubungan antar simpul (edge), serta penelusuran graph menggunakan algoritma Depth First Search (DFS) dan Breadth First Search (BFS). Melalui praktikum ini, mahasiswa dapat memahami cara kerja traversal graph secara terstruktur, sistematis, dan efisien dengan memanfaatkan penanda visited untuk menghindari kunjungan berulang pada simpul yang sama.
 ## Referensi
 Petani Kode. (n.d.). Struktur Data Graph.
+
 
 
 
