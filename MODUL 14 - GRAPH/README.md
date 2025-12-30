@@ -5,8 +5,80 @@
 Graph merupakan himpunan tidak kosong dari node (vertec) dan garis penghubung (edge). Contoh sederhana tentang graph, yaitu antara Tempat Kost Anda dengan Common Lab. Tempat Kost Anda dan Common Lab merupakan node (vertec). Jalan yang menghubungkan tempat Kost dan Common Lab merupakan garis penghubung antara keduanya (edge).
 ## Guided 
 
-### 1. [MLL]
+### 1. [GRAPH]
+#ifndef GRAPH_H_INCLUDE
+#define GRAPH_H_INCLUDE
+typedefintinfoGraph;
+typedefstruct ElmNode*adrNode;
+typedefstruct ElmEdge*adrEdge;
 
+structElmNode{
+    infoGraph info;
+    intVisited;
+    intPred;
+    adrEdgefirstEdge;
+    adrNode Next;
+};
+    structElmEdge{
+    adrNode Node;
+    adrEdge Next;
+};
+
+struct Graph {
+    adrNode First;
+};
+
+adrNode AllocateNode(infoGraphX);
+adrEdgeAllocateEdge(adrNodeN);
+void CreateGraph(Graph &G);
+void InsertNode(Graph &G,infoGraphX);
+void DeleteNode(Graph &G,infoGraphX);
+void ConnectNode(adrNodeN1,adrNode N2);
+void DisconnectNode (adrNodeN1, adrNodeN2);
+adrNodeFindNode(Graph G,infoGraphX);
+adrEdgeFindEdge(adrNodeN,adrNodeNFind);
+void PrintInfoGraph (Graph G);
+void PrintTopologicalSort(Graph G);
+
+#endif
+
+#ifndef GRAPH_H_INCLUDE
+#define GRAPH_H_INCLUDE
+
+typedefintinfoGraph;
+typedefstruct ElmNode*adrNode;
+typedefstruct ElmEdge*adrEdge;
+
+structElmNode{
+    infoGraph info;
+    intVisited;
+    adrEdgefirstEdge;
+    adrNode Next;
+};
+
+struct ElmEdge{
+    adrNode Node;
+    adrEdge Next;
+};
+struct Graph {
+    adrNode First;
+};
+
+//Adds Node
+ElmNode addNode(infoGrapha,intb, adrEdgec,adrNoded){
+    ElmNodenewNode;
+    newNode.Info= a;
+    newNode.Visited=b ;
+    newNode.firstEdge= c;
+    newNode.Next = d;
+returnnewNode;
+}
+//Addsanedgetoa graph
+void addEdge(ElmNodenewNode){
+    ElmEdgenewEdge;
+    newEdge.Node = newNode.Next;
+    newEdge.Next = newNode.firstEdge;
+}
 ## Unguided 
 
 
@@ -200,6 +272,7 @@ Soal ini menekankan pemahaman ADT Graph tidak berarah dalam merepresentasikan hu
 Praktikum ini bertujuan untuk memahami mekanisme kerja ADT Graph tidak berarah menggunakan representasi adjacency list, khususnya pada proses penambahan simpul (node), penghubungan antar simpul (edge), serta penelusuran graph menggunakan algoritma Depth First Search (DFS) dan Breadth First Search (BFS). Melalui praktikum ini, mahasiswa dapat memahami cara kerja traversal graph secara terstruktur, sistematis, dan efisien dengan memanfaatkan penanda visited untuk menghindari kunjungan berulang pada simpul yang sama.
 ## Referensi
 Petani Kode. (n.d.). Struktur Data Graph.
+
 
 
 
